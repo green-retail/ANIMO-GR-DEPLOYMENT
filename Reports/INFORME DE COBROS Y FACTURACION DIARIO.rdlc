@@ -1,0 +1,2233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="GRPOS">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=yaileen;Initial Catalog=GRGWM</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:DataSourceID>ea97df8f-4d61-49a4-b59e-c091c3fe8752</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DS_R_Diario">
+      <Query>
+        <DataSourceName>GRPOS</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Fecha">
+            <Value>=Parameters!Fecha.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>SELECT        TOP (1) ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTCONTADOdia, ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSFAC, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTALFAC, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTCONTADOdiaNC, ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSNC, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTALNC, (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TOTfacNcneto, ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND ([IVA Amount] &gt; 0) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSNCFACNeto, (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND ([IVA Amount] &gt; 0) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
+                             ((SELECT        SUM([IVA Amount]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TOTAlNCFAC, ISNULL
+                             ((SELECT        CAST(SUM(sp.Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (hd.[Document Type] = 8) AND (hd.Status = 1) AND (sp.State = 1)  AND (CONVERT(date, hd.[Document Date], 103) = CONVERT(date, @Fecha, 
+                                                          103))
+                                 ), 0) AS EFECTIVO, ISNULL
+                             ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS spi INNER JOIN
+                                                          [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
+                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.Prepayment = 1) AND (spi.State = 1) AND (CONVERT(date, sh.[Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                         AS Abonoporfacdiario,
+						 
+						 (isnull((select sum([Total Amount]) from [Sales Header] sh
+						 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) 
+						 AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) = MONTH(@Fecha))),0)
+						 
+						 - ISNULL
+                             ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS spi INNER JOIN
+                                                          [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
+                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.State = 1) AND (spi.Prepayment = 1) AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) 
+                                                          = MONTH(@Fecha))), 0)) AS AbonoporfacMES
+														  
+														  
+														  
+														  
+														  
+														  , ISNULL
+                             ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS spi INNER JOIN
+                                                          [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
+                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.State = 1) AND (spi.Prepayment = 1) AND (CONVERT(date, sh.[Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                         AS AbonoAPLICAdiario, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS Totalventadiagrab, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TotalventadiNoagrab, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalVentMesGrab, 
+                         ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalVentMesNoGrab, 
+                         ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS DescDia, ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS DescMes, ISNULL
+                             ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS IVAdia, ISNULL
+                             ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS IVAAcum, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TotalNCdiNoagra, ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalNCdiNoagrabAcum, (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TotalVenDiaContCred, (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0)) - (ISNULL
+                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 FROM            [Sales Header] AS hd
+                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0)) AS TotalVenmesContCred, CONVERT(date, @Fecha, 103) 
+                         AS Fechaparametro
+FROM            [Sales Header] AS sh</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="TOTCONTADOdia">
+          <DataField>TOTCONTADOdia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ITBMSFAC">
+          <DataField>ITBMSFAC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTALFAC">
+          <DataField>TOTALFAC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTCONTADOdiaNC">
+          <DataField>TOTCONTADOdiaNC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ITBMSNC">
+          <DataField>ITBMSNC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTALNC">
+          <DataField>TOTALNC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTfacNcneto">
+          <DataField>TOTfacNcneto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TOTAlNCFAC">
+          <DataField>TOTAlNCFAC</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="ITBMSNCFACNeto">
+          <DataField>ITBMSNCFACNeto</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="EFECTIVO">
+          <DataField>EFECTIVO</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Abonoporfacdiario">
+          <DataField>Abonoporfacdiario</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AbonoporfacMES">
+          <DataField>AbonoporfacMES</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="AbonoAPLICAdiario">
+          <DataField>AbonoAPLICAdiario</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Totalventadiagrab">
+          <DataField>Totalventadiagrab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalventadiNoagrab">
+          <DataField>TotalventadiNoagrab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalVentMesGrab">
+          <DataField>TotalVentMesGrab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalVentMesNoGrab">
+          <DataField>TotalVentMesNoGrab</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DescDia">
+          <DataField>DescDia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DescMes">
+          <DataField>DescMes</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="IVAdia">
+          <DataField>IVAdia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="IVAAcum">
+          <DataField>IVAAcum</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalNCdiNoagra">
+          <DataField>TotalNCdiNoagra</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalNCdiNoagrabAcum">
+          <DataField>TotalNCdiNoagrabAcum</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalVenDiaContCred">
+          <DataField>TotalVenDiaContCred</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="TotalVenmesContCred">
+          <DataField>TotalVenmesContCred</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Fechaparametro">
+          <DataField>Fechaparametro</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="DS_Tienda">
+      <Query>
+        <DataSourceName>GRPOS</DataSourceName>
+        <CommandText>SELECT Name  FROM [dbo].[Store]
+  where code=01</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="Name">
+          <DataField>Name</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Line Name="Line2">
+            <Top>7.43804cm</Top>
+            <Left>19.83375cm</Left>
+            <Height>0cm</Height>
+            <Width>-17.61125cm</Width>
+            <Style>
+              <Border>
+                <Style>Dashed</Style>
+                <Width>2pt</Width>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox159">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ACUMULADO NOTAS DE CREDITO S/ITBMS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox159</rd:DefaultName>
+            <Top>15.27352cm</Top>
+            <Left>2.16957cm</Left>
+            <Height>0.6cm</Height>
+            <Width>9.29979cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox160">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTA MENSUAL CONTADO/CREDITO S/ITBMS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox159</rd:DefaultName>
+            <Top>16.82983cm</Top>
+            <Left>2.16953cm</Left>
+            <Height>0.6cm</Height>
+            <Width>11.12542cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ABONOS POR FACTURAR DIARIO </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>4.04609cm</Top>
+            <Left>2.22251cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.97688cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ABONOS POR FACTURAR MES </Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>4.82247cm</Top>
+            <Left>2.2225cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ABONOS APLICADO DIARIO</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>5.56359cm</Top>
+            <Left>2.22251cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>EFECTIVO EN CAJA</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>6.33998cm</Top>
+            <Left>2.22251cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="EFECTIVO">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!EFECTIVO.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>EFECTIVO</rd:DefaultName>
+            <Top>6.3047cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Abonoporfacdiario">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!Abonoporfacdiario.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Abonoporfacdiario</rd:DefaultName>
+            <Top>4.01081cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="AbonoporfacMES">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!AbonoporfacMES.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>AbonoporfacMES</rd:DefaultName>
+            <Top>4.71664cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="AbonoAPLICAdiario">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!AbonoAPLICAdiario.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>AbonoAPLICAdiario</rd:DefaultName>
+            <Top>5.49302cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTCONTADOdia">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTCONTADOdia.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTCONTADOdia</rd:DefaultName>
+            <Top>1.17271cm</Top>
+            <Left>10.1136cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTAS</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.17639cm</Top>
+            <Left>10.1136cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.9212cm</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>I.T.B.M.S.</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.17639cm</Top>
+            <Left>13.48252cm</Left>
+            <Height>0.6cm</Height>
+            <Width>1.83641cm</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL FACTURADO</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.14111cm</Top>
+            <Left>16.04631cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79433cm</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ITBMSFAC">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!ITBMSFAC.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ITBMSFAC</rd:DefaultName>
+            <Top>1.17271cm</Top>
+            <Left>13.13856cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTALFAC">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTALFAC.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTALFAC</rd:DefaultName>
+            <Top>1.13743cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTCONTADOdiaNC">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTCONTADOdiaNC.Value, "DS_R_Diario")*-1</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTCONTADOdiaNC</rd:DefaultName>
+            <Top>2.17813cm</Top>
+            <Left>10.1136cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ITBMSNC">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!ITBMSNC.Value, "DS_R_Diario")*-1</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ITBMSNC</rd:DefaultName>
+            <Top>2.17813cm</Top>
+            <Left>13.13856cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTALNC">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTALNC.Value, "DS_R_Diario")*-1</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTALNC</rd:DefaultName>
+            <Top>2.14285cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL NETO EN VENTA</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.17445cm</Top>
+            <Left>2.22251cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTCONTADOdiaNC2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTfacNcneto.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTCONTADOdiaNC</rd:DefaultName>
+            <Top>3.17445cm</Top>
+            <Left>10.1136cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ITBMSNC2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!ITBMSNCFACNeto.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ITBMSNC</rd:DefaultName>
+            <Top>3.17445cm</Top>
+            <Left>13.13856cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TOTALNC2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TOTAlNCFAC.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TOTALNC</rd:DefaultName>
+            <Top>3.13917cm</Top>
+            <Left>17.02527cm</Left>
+            <Height>0.6cm</Height>
+            <Width>2.81536cm</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+                <Width>1.5pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>NOTA DE CREDITO</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>2.17813cm</Top>
+            <Left>2.2225cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox12">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>VENTA AL CONTADO</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.17271cm</Top>
+            <Left>2.22251cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTAS MES GRABADAS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>9.8155cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTAS MES NO GRABADAS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>10.59188cm</Top>
+            <Left>2.16959cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL DESCUENTO DIARIO EN VENTA</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>11.333cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox16">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL DESCUENTO MENSUAL EN VENTA</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>12.10939cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.74417cm</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTAS DIARIAS NO GRABADAS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>8.94386cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTAS DIARIAS GRABADAS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>7.94754cm</Top>
+            <Left>2.16959cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ITBMS DIARIO</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>12.84697cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL ACUMULADO ITBMS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>13.62336cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.13021cm</Width>
+            <ZIndex>33</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox21">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL NOTAS DE CREDITO DIARIO S/ITBMS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>14.53241cm</Top>
+            <Left>2.1696cm</Left>
+            <Height>0.6cm</Height>
+            <Width>8.02979cm</Width>
+            <ZIndex>34</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox22">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TOTAL VENTA DIARIA CONTADO/CREDITO S/ITBMS</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>16.05344cm</Top>
+            <Left>2.16957cm</Left>
+            <Height>0.6cm</Height>
+            <Width>9.29976cm</Width>
+            <ZIndex>35</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Totalventadiagrab">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!Totalventadiagrab.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Totalventadiagrab</rd:DefaultName>
+            <Top>7.94754cm</Top>
+            <Left>15.99333cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79432cm</Width>
+            <ZIndex>36</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalventadiNoagrab">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalventadiNoagrab.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalventadiNoagrab</rd:DefaultName>
+            <Top>8.94386cm</Top>
+            <Left>15.99333cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79432cm</Width>
+            <ZIndex>37</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalVentMesGrab">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalVentMesGrab.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalVentMesGrab</rd:DefaultName>
+            <Top>9.8155cm</Top>
+            <Left>15.95586cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.83179cm</Width>
+            <ZIndex>38</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalVentMesNoGrab">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalVentMesNoGrab.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalVentMesNoGrab</rd:DefaultName>
+            <Top>10.63363cm</Top>
+            <Left>15.95586cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.83179cm</Width>
+            <ZIndex>39</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DescDia">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!DescDia.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DescDia</rd:DefaultName>
+            <Top>11.333cm</Top>
+            <Left>15.95586cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.83179cm</Width>
+            <ZIndex>40</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="DescMes">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!DescMes.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>DescMes</rd:DefaultName>
+            <Top>12.10939cm</Top>
+            <Left>15.95586cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.83179cm</Width>
+            <ZIndex>41</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="IVAdia">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!IVAdia.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>IVAdia</rd:DefaultName>
+            <Top>12.84697cm</Top>
+            <Left>15.95584cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.8318cm</Width>
+            <ZIndex>42</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="IVAAcum">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!IVAAcum.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>IVAAcum</rd:DefaultName>
+            <Top>13.62336cm</Top>
+            <Left>15.95586cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.83179cm</Width>
+            <ZIndex>43</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalNCdiNoagrabAcum">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalNCdiNoagrabAcum.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalNCdiNoagrabAcum</rd:DefaultName>
+            <Top>15.27352cm</Top>
+            <Left>15.95584cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.8318cm</Width>
+            <ZIndex>44</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalVenDiaContCred">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalVenDiaContCred.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalVenDiaContCred</rd:DefaultName>
+            <Top>16.05344cm</Top>
+            <Left>15.99331cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79433cm</Width>
+            <ZIndex>45</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalVenmesContCred">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalVenmesContCred.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalVenmesContCred</rd:DefaultName>
+            <Top>16.82983cm</Top>
+            <Left>15.99331cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79433cm</Width>
+            <ZIndex>46</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="TotalNCdiNoagra">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Sum(Fields!TotalNCdiNoagra.Value, "DS_R_Diario")</Value>
+                    <Style>
+                      <Format>#,0.00</Format>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TotalNCdiNoagra</rd:DefaultName>
+            <Top>14.53241cm</Top>
+            <Left>15.99331cm</Left>
+            <Height>0.6cm</Height>
+            <Width>3.79433cm</Width>
+            <ZIndex>47</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox23">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>MENOS</Value>
+                    <Style>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>2.17813cm</Top>
+            <Left>0.40209cm</Left>
+            <Height>0.6cm</Height>
+            <Width>1.64402cm</Width>
+            <ZIndex>48</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>6.93102in</Height>
+        <Style />
+      </Body>
+      <Width>7.81128in</Width>
+      <Page>
+        <PageHeader>
+          <Height>3.18974cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox5">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>INFORME DE COBROS Y FACTURACION DIARIO</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox5</rd:DefaultName>
+              <Top>1.13716cm</Top>
+              <Left>4.83564cm</Left>
+              <Height>0.6cm</Height>
+              <Width>10.16937cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Desde">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>="Fecha Consultada: " + First(Fields!Fechaparametro.Value, "DS_R_Diario")</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Desde</rd:DefaultName>
+              <Top>0.83427in</Top>
+              <Left>6.8247cm</Left>
+              <Height>0.19792in</Height>
+              <Width>2.4375in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="UserID">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=User!UserID</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <Color>Gray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>UserID</rd:DefaultName>
+              <Left>15.22397cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.45792cm</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <Color>Gray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>0.63529cm</Top>
+              <Left>15.22397cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.45792cm</Width>
+              <ZIndex>3</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Name">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Name.Value, "DS_Tienda")</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Name</rd:DefaultName>
+              <Top>0.36077cm</Top>
+              <Left>5.96024cm</Left>
+              <Height>0.6cm</Height>
+              <Width>7.92016cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>0.80285cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="OverallPageNumber">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>= "Página: " &amp;Globals!OverallPageNumber &amp; " de " &amp;Globals!OverallPageNumber</Value>
+                      <Style>
+                        <Color>Gray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>OverallPageNumber</rd:DefaultName>
+              <Top>0.10139cm</Top>
+              <Left>7.68264cm</Left>
+              <Height>0.6cm</Height>
+              <Width>4.47537cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Versión 1.2</Value>
+                      <Style>
+                        <FontSize>6pt</FontSize>
+                        <Color>Gray</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.37748cm</Top>
+              <Height>0.36187cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0.5cm</RightMargin>
+        <TopMargin>1cm</TopMargin>
+        <BottomMargin>1cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Fecha">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Fecha</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>aa2b2ef2-420b-47a9-b848-410e30db15b7</rd:ReportID>
+</Report>
