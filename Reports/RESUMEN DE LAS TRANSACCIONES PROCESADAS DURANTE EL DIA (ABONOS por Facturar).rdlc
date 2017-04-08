@@ -5,7 +5,7 @@
     <DataSource Name="GRPOS">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=Yaileen;Initial Catalog=GRGWM</ConnectString>
+        <ConnectString>Data Source=NOW-SIST-01\SQLSIST01;Initial Catalog=GR2</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:DataSourceID>636aa96b-600e-4e56-aea5-e55d740a8d33</rd:DataSourceID>
@@ -23,21 +23,20 @@
         <CommandText>SELECT  
  hd.[Document Date] FECHA
 , hd.[No Receipt] NUM_DOC
-, hd.[No Transaccion] Num_fac_Sist
+, (SELECT SP.Name FROM [dbo].[Salesperson/Employee] SP WHERE hd.[Salesperson Code]=SP.Code) VENDEDOR
 , hd.[Customer No] CodCli
 , hd.[Customer Name] NAMECLI
 , hd.[Total Amount] 
 , sum(sp.[amount]) abono
-,convert(date,@Fecha,103) Fechaparametro
 
 from [Sales Header] hd
  INNER JOIN
  [Sales Payment methods] AS sp 
  ON hd.[No Transaccion] = sp.[Transaction No]
 
-WHERE        (hd.[Document Type] = 8) AND (hd.Status =7 ) and (sp.Prepayment=1) and (sp.state=1)
-AND (CONVERT(date, hd.[Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))
-GROUP BY  hd.[No Receipt],  hd.[No Transaccion], hd.[Customer No], hd.[Document Date], hd.[Customer Name], hd.[Salesperson Code], hd.[Total Amount]
+WHERE        (hd.[Document Type] = 8) AND (hd.Status &lt;&gt; 1) and sp.Prepayment=1
+AND (CONVERT(date, hd.[Document Date], 103) = CONVERT(date, @Fecha, 103))
+GROUP BY  hd.[No Receipt], hd.[Customer No], hd.[Document Date], hd.[Customer Name], hd.[Salesperson Code], hd.[Total Amount]
 ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
@@ -50,8 +49,8 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
           <DataField>NUM_DOC</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="Num_fac_Sist">
-          <DataField>Num_fac_Sist</DataField>
+        <Field Name="VENDEDOR">
+          <DataField>VENDEDOR</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="CodCli">
@@ -70,9 +69,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
           <DataField>abono</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Fechaparametro">
-          <DataField>Fechaparametro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="Document_Date">
+          <DataField>Document_Date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -98,37 +97,38 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.64584in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.94792in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.90889in</Width>
+                  <Width>0.89583in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.67865in</Width>
+                  <Width>0.88542in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.7885in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.88201in</Width>
+                  <Width>0.77784in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.89906in</Width>
+                  <Width>0.7813in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.96875in</Width>
+                  <Width>1in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.18875in</Height>
+                  <Height>0.22in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox10">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -136,8 +136,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Fecha</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -148,28 +146,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox10</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -181,6 +161,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -188,8 +169,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Núm. Documento</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -200,28 +179,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -232,16 +193,15 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox27">
+                        <Textbox Name="Textbox12">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=rtrim("No. Fact Sist.")</Value>
+                                  <Value>Vendedor</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -249,31 +209,13 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox18</rd:DefaultName>
+                          <rd:DefaultName>Textbox12</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -285,6 +227,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -292,8 +235,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Código</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -304,28 +245,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -337,6 +260,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox13">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -344,8 +268,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Nombre</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -356,28 +278,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox13</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -389,6 +293,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox14">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -396,8 +301,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Total</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -410,28 +313,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox14</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -443,6 +328,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox15">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -450,8 +336,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Abono</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -464,28 +348,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox15</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -497,6 +363,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox16">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -504,8 +371,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Saldo</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -518,28 +383,10 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox16</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
+                            <BackgroundColor>LightGrey</BackgroundColor>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -551,11 +398,12 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.18917in</Height>
+                  <Height>0.21in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="FECHA">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -563,8 +411,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!FECHA.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <Format>d</Format>
                                   </Style>
                                 </TextRun>
@@ -575,29 +422,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>FECHA</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -609,6 +436,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="NUM_DOC">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -616,8 +444,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!NUM_DOC.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -627,29 +454,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>NUM_DOC</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -660,48 +467,28 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Num_fac_Sist">
+                        <Textbox Name="VENDEDOR">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Num_fac_Sist.Value</Value>
+                                  <Value>=Fields!VENDEDOR.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Num_fac_Sist</rd:DefaultName>
+                          <rd:DefaultName>VENDEDOR</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -713,6 +500,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="CodCli">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -720,8 +508,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!CodCli.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -731,29 +518,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>CodCli</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -765,6 +532,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="NAMECLI">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -772,8 +540,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!NAMECLI.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -783,29 +550,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>NAMECLI</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -817,6 +564,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Total_Amount">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -824,43 +572,20 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!Total_Amount.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Total_Amount</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -872,6 +597,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="abono">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -879,43 +605,20 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!abono.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>abono</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -927,6 +630,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Total_Amount1">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -934,43 +638,20 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Fields!Total_Amount.Value-Fields!abono.Value</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Total_Amount1</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -982,11 +663,12 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.1875in</Height>
+                  <Height>0.25in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox19">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -994,9 +676,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1006,29 +686,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox19</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1040,6 +700,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox20">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1047,9 +708,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1059,29 +718,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox20</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1093,6 +732,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox21">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1100,9 +740,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1112,29 +750,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1146,6 +764,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox22">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1153,9 +772,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>7pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1165,29 +782,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox22</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1199,6 +796,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox23">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1206,9 +804,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value />
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>8pt</FontSize>
-                                    <FontWeight>Bold</FontWeight>
+                                    <FontFamily>Tahoma</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1218,29 +814,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                           <rd:DefaultName>Textbox23</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
-                            <TopBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1.5pt</Width>
-                            </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1252,6 +828,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox24">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1259,21 +836,19 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Sum(Fields!Total_Amount.Value)</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <TopBorder>
@@ -1281,22 +856,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                               <Style>Solid</Style>
                               <Width>1.5pt</Width>
                             </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1308,6 +867,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox25">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1315,21 +875,19 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=Sum(Fields!abono.Value)</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox25</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <TopBorder>
@@ -1337,22 +895,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                               <Style>Solid</Style>
                               <Width>1.5pt</Width>
                             </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1364,6 +906,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="Textbox26">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1371,21 +914,19 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>=sum(Fields!Total_Amount.Value-Fields!abono.Value)</Value>
                                   <Style>
-                                    <FontFamily>Courier New</FontFamily>
-                                    <FontSize>8pt</FontSize>
+                                    <FontFamily>Tahoma</FontFamily>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox26</rd:DefaultName>
                           <Style>
                             <Border>
+                              <Color>LightGrey</Color>
                               <Style>Solid</Style>
                             </Border>
                             <TopBorder>
@@ -1393,22 +934,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                               <Style>Solid</Style>
                               <Width>1.5pt</Width>
                             </TopBorder>
-                            <BottomBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </BottomBorder>
-                            <LeftBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </LeftBorder>
-                            <RightBorder>
-                              <Color>Black</Color>
-                              <Style>Solid</Style>
-                              <Width>1pt</Width>
-                            </RightBorder>
-                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1457,12 +982,13 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </TablixMembers>
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.3225in</Top>
-            <Height>0.56542in</Height>
-            <Width>7.71962in</Width>
+            <Top>0.61in</Top>
+            <Height>0.68in</Height>
+            <Width>7.34039in</Width>
             <Style />
           </Tablix>
           <Textbox Name="Desde2">
+            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -1470,7 +996,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                   <TextRun>
                     <Value>="Abonos Por Facturar"</Value>
                     <Style>
-                      <FontFamily>Courier New</FontFamily>
                       <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
@@ -1481,8 +1006,8 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Desde</rd:DefaultName>
-            <Top>0.04402in</Top>
-            <Left>6.42228cm</Left>
+            <Top>0.18152in</Top>
+            <Left>6.22865cm</Left>
             <Height>0.19792in</Height>
             <Width>2.4375in</Width>
             <ZIndex>1</ZIndex>
@@ -1497,26 +1022,26 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>2.25532cm</Height>
+        <Height>3.51472cm</Height>
         <Style />
       </Body>
-      <Width>19.60783cm</Width>
+      <Width>18.64856cm</Width>
       <Page>
         <PageHeader>
-          <Height>1.65806cm</Height>
+          <Height>2.54cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="Textbox5">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>RESUMEN DE LAS TRANSACCIONES PROCESADAS DURANTE EL DIA (ABONOS POR FACTURAR)</Value>
+                      <Value>RESUMEN DE LAS TRANSACCIONES PROCESADAS DURANTE EL DIA (ABONOS)</Value>
                       <Style>
-                        <FontFamily>Courier New</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1527,15 +1052,14 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>0.58403cm</Top>
-              <Left>2.45233cm</Left>
-              <Height>0.48015cm</Height>
-              <Width>14.13115cm</Width>
+              <Top>1.34594cm</Top>
+              <Left>0.8397cm</Left>
+              <Height>0.6cm</Height>
+              <Width>16.96916cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1543,15 +1067,15 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </Style>
             </Textbox>
             <Textbox Name="Desde">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Fecha Consultada: " +First(Fields!Fechaparametro.Value, "DataSet1")</Value>
+                      <Value>="Fecha Consultada: " +First(Fields!Document_Date.Value, "DataSet1")</Value>
                       <Style>
-                        <FontFamily>Courier New</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1561,16 +1085,15 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Desde</rd:DefaultName>
-              <Top>0.47453in</Top>
-              <Left>6.42228cm</Left>
-              <Height>0.17785in</Height>
+              <Top>0.78761in</Top>
+              <Left>6.22865cm</Left>
+              <Height>0.19792in</Height>
               <Width>2.4375in</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1578,6 +1101,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </Style>
             </Textbox>
             <Textbox Name="UserID">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1585,7 +1109,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=User!UserID</Value>
                       <Style>
-                        <FontSize>6pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <Color>Gray</Color>
                       </Style>
                     </TextRun>
@@ -1596,9 +1120,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>UserID</rd:DefaultName>
-              <Top>0.03379cm</Top>
-              <Left>15.14988cm</Left>
-              <Height>0.4782cm</Height>
+              <Top>0.09135cm</Top>
+              <Left>14.19064cm</Left>
+              <Height>0.6cm</Height>
               <Width>4.45792cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
@@ -1612,6 +1136,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </Style>
             </Textbox>
             <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1619,7 +1144,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
                       <Style>
-                        <FontSize>6pt</FontSize>
+                        <FontSize>8pt</FontSize>
                         <Color>Gray</Color>
                       </Style>
                     </TextRun>
@@ -1630,9 +1155,9 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>ExecutionTime</rd:DefaultName>
-              <Top>0.46223cm</Top>
-              <Left>15.14988cm</Left>
-              <Height>0.60195cm</Height>
+              <Top>0.74594cm</Top>
+              <Left>14.19064cm</Left>
+              <Height>0.6cm</Height>
               <Width>4.45792cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
@@ -1646,6 +1171,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               </Style>
             </Textbox>
             <Textbox Name="Name">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1653,8 +1179,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=First(Fields!Name.Value, "DS_Tienda")</Value>
                       <Style>
-                        <FontFamily>Courier New</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1665,8 +1190,8 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Name</rd:DefaultName>
-              <Top>0.07056cm</Top>
-              <Left>5.55783cm</Left>
+              <Top>0.56955cm</Top>
+              <Left>5.3642cm</Left>
               <Height>0.6cm</Height>
               <Width>7.92016cm</Width>
               <ZIndex>4</ZIndex>
@@ -1674,7 +1199,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -1692,8 +1216,8 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
         <PageWidth>21.59cm</PageWidth>
         <LeftMargin>0.5cm</LeftMargin>
         <RightMargin>0.5cm</RightMargin>
-        <TopMargin>0.5cm</TopMargin>
-        <BottomMargin>0.5cm</BottomMargin>
+        <TopMargin>2.54cm</TopMargin>
+        <BottomMargin>2.54cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style />
       </Page>
