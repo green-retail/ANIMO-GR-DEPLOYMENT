@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="GRPOS">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=yaileen;Initial Catalog=GRGWM</ConnectString>
+        <ConnectString>Data Source=NOW-SIST-01\SQLSIST01;Initial Catalog=GRGWM</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:DataSourceID>ea97df8f-4d61-49a4-b59e-c091c3fe8752</rd:DataSourceID>
@@ -21,163 +21,92 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT        TOP (1) ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTCONTADOdia, ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSFAC, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTALFAC, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTCONTADOdiaNC, ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSNC, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TOTALNC, (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TOTfacNcneto, ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND ([IVA Amount] &gt; 0) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSNCFACNeto, (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND ([IVA Amount] &gt; 0) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) + ISNULL
-                             ((SELECT        SUM([IVA Amount]) AS Expr1
-                                 FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND ([IVA Amount] &gt; 0) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TOTAlNCFAC, ISNULL
-                             ((SELECT        CAST(SUM(sp.Amount) AS decimal(18, 2)) AS Expr1
+                             ((SELECT        CAST(SUM(hd.[Subtotal Excl IVA]) AS money) AS Expr1
                                  FROM            [Sales Payment methods] AS sp INNER JOIN
                                                           [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
-                                 WHERE        (hd.[Document Type] = 8) AND (hd.Status = 1) AND (sp.State = 1)  AND (CONVERT(date, hd.[Document Date], 103) = CONVERT(date, @Fecha, 
-                                                          103))
-                                 ), 0) AS EFECTIVO, ISNULL
+                                 WHERE        (hd.[Document Type] = 8) AND (hd.Status = 1) AND (sp.[Code Payment Metodth] &lt;&gt; 07) AND (sp.State = 1) AND (CONVERT(date, sp.[Creation date], 103) 
+                                                          = CONVERT(date, @Fecha, 103))), 0) AS TOTCONTADOdia, ISNULL
+                             ((SELECT        SUM(shi.[IVA Amount]) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS shi ON shi.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (shi.[Document Type] = 8) AND (shi.Status = 1) AND (sp.[Code Payment Metodth] &lt;&gt; 07) AND (sp.State = 1) AND (CONVERT(date, shi.[Document Date], 
+                                                          103) = CONVERT(date, @Fecha, 103))), 0) AS ITBMSFAC, ISNULL
+                             ((SELECT        CAST(SUM(hd.[Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (hd.[Document Type] = 8) AND (hd.Status = 1) AND (sp.[Code Payment Metodth] &lt;&gt; 07) AND (sp.State = 1) AND (CONVERT(date, sp.[Creation date], 103) 
+                                                          = CONVERT(date, @Fecha, 103))), 0) + ISNULL
+                             ((SELECT        SUM(shi.[IVA Amount]) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS shi ON shi.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (shi.[Document Type] = 8) AND (shi.Status = 1) AND (sp.[Code Payment Metodth] &lt;&gt; 07) AND (sp.State = 1) AND (CONVERT(date, shi.[Document Date], 
+                                                          103) = CONVERT(date, @Fecha, 103))), 0) AS TOTALFAC, ISNULL
+                             ((SELECT        CAST(SUM(hd.[Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (hd.[Document Type] = 9) AND (hd.Status = 4 OR
+                                                          hd.Status = 5) AND (sp.[Code Payment Metodth] = 07) AND (sp.State = 1) AND (CONVERT(date, sp.[Creation date], 103) = CONVERT(date, @Fecha, 
+                                                          103))), 0) AS TOTCONTADOdiaNC, ISNULL
+                             ((SELECT        SUM(shi.[IVA Amount]) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS shi ON shi.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (shi.[Document Type] = 9) AND (shi.Status = 4 OR
+                                                          shi.Status = 5) AND (sp.[Code Payment Metodth] = 07) AND (sp.State = 1) AND (CONVERT(date, shi.[Document Date], 103) = CONVERT(date, @Fecha, 
+                                                          103))), 0) AS ITBMSNC, ISNULL
+                             ((SELECT        CAST(SUM(hd.[Subtotal Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (hd.[Document Type] = 9) AND (hd.Status = 4 OR
+                                                          hd.Status = 5) AND (sp.[Code Payment Metodth] = 07) AND (sp.State = 1) AND (CONVERT(date, sp.[Creation date], 103) = CONVERT(date, @Fecha, 
+                                                          103))), 0) + ISNULL
+                             ((SELECT        SUM(shi.[IVA Amount]) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS shi ON shi.[No Transaccion] = sp.[Transaction No]
+                                 WHERE        (shi.[Document Type] = 9) AND (shi.Status = 4 OR
+                                                          shi.Status = 5) AND (sp.[Code Payment Metodth] = 07) AND (sp.State = 1) AND (CONVERT(date, shi.[Document Date], 103) = CONVERT(date, @Fecha, 
+                                                          103))), 0) AS TOTALNC, ISNULL
+                             ((SELECT        CAST(SUM(Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp
+                                 WHERE        ([Code Payment Metodth] = 01) AND (State = 1) AND (CONVERT(date, [Creation date], 103) = CONVERT(date, @Fecha, 103))), 0) AS EFECTIVO, 
+                         ISNULL
                              ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
                                  FROM            [Sales Payment methods] AS spi INNER JOIN
                                                           [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
-                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.Prepayment = 1) AND (spi.State = 1) AND (CONVERT(date, sh.[Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
-                         AS Abonoporfacdiario,
-						 
-						 (isnull((select sum([Total Amount]) from [Sales Header] sh
-						 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) 
-						 AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) = MONTH(@Fecha))),0)
-						 
-						 - ISNULL
+                                 WHERE        (sh.Status &lt;&gt; 1) AND (spi.Prepayment = 1) AND (spi.State = 1) AND (CONVERT(date, spi.[Creation date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                         AS Abonoporfacdiario, ISNULL
+                             ((SELECT        CAST(SUM(sp.Amount) AS decimal(18, 2)) AS Expr1
+                                 FROM            [Sales Payment methods] AS sp INNER JOIN
+                                                          [Sales Header] AS sh ON sh.[No Transaccion] = sp.[Transaction No] AND sh.[No Receipt] = sp.[No Receipt]
+                                 WHERE        (sh.Status &lt;&gt; 1) AND (sp.Prepayment = 1) AND (sp.State = 1) AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) 
+                                                          = MONTH(@Fecha))), 0) AS AbonoporfacMES, ISNULL
                              ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
                                  FROM            [Sales Payment methods] AS spi INNER JOIN
                                                           [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
-                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.State = 1) AND (spi.Prepayment = 1) AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) 
-                                                          = MONTH(@Fecha))), 0)) AS AbonoporfacMES
-														  
-														  
-														  
-														  
-														  
-														  , ISNULL
-                             ((SELECT        CAST(SUM(spi.Amount) AS decimal(18, 2)) AS Expr1
-                                 FROM            [Sales Payment methods] AS spi INNER JOIN
-                                                          [Sales Header] AS sh ON sh.[No Transaccion] = spi.[Transaction No] AND sh.[No Receipt] = spi.[No Receipt]
-                                 WHERE        (sh.[Document Type] = 8) AND (sh.Status = 7) AND (spi.State = 1) AND (spi.Prepayment = 1) AND (CONVERT(date, sh.[Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                                 WHERE        (sh.Status = 1) AND (spi.Prepayment = 1) AND (spi.State = 1) AND (CONVERT(date, spi.[Creation date], 103) = CONVERT(date, @Fecha, 103))), 0) 
                          AS AbonoAPLICAdiario, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS Totalventadiagrab, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TotalventadiNoagrab, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalVentMesGrab, 
-                         ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalVentMesNoGrab, 
-                         ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
                                  FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                         AS Totalventadiagrab, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
                                  FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS DescDia, ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) 
+                         AS TotalventadiNoagrab, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
                                  FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] &gt; 0) AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) 
+                                                          = MONTH(@Fecha))), 0) AS TotalVentMesGrab, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
                                  FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS DescMes, ISNULL
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND ([IVA Amount] = 0) AND (YEAR(sh.[Document Date]) = YEAR(@Fecha)) AND (MONTH(sh.[Document Date]) 
+                                                          = MONTH(@Fecha))), 0) AS TotalVentMesNoGrab, ISNULL
+                             ((SELECT        CAST(SUM([Discount Amount Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS DescDia, ISNULL
+                             ((SELECT        CAST(SUM([Discount Amount Excl IVA]) AS money) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) 
+                         AS DescMes, ISNULL
                              ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
                                  FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
@@ -187,56 +116,34 @@
                                                           Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS IVAdia, ISNULL
                              ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
                                  FROM            [Sales Header] AS shi
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))), 0) - ISNULL
                              ((SELECT        CAST(SUM([IVA Amount]) AS money) AS Expr1
                                  FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS IVAAcum, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))), 0) AS IVAAcum, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 9) AND (Status = 4 OR
                                                           Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) AS TotalNCdiNoagra, ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))), 0) AS TotalNCdiNoagrabAcum, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))), 0) - ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalNCdiNoagrabAcum, (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) - (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
+                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) &lt;= CONVERT(date, @Fecha, 103))), 0) AS TotalVenDiaContCred, ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
+                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) 
+                         - ISNULL
+                             ((SELECT        SUM([Subtotal Excl IVA]) AS Expr1
+                                 FROM            [Sales Header] AS shi
                                  WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (CONVERT(date, [Document Date], 103) = CONVERT(date, @Fecha, 103))), 0)) AS TotalVenDiaContCred, (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 8) AND (Status = 1) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0)) - (ISNULL
-                             ((SELECT        CAST(SUM([Subtotal Excl IVA]) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) - ISNULL
-                             ((SELECT        CAST(SUM(DiscountAmountOnSubtotal) AS money) AS Expr1
-                                 FROM            [Sales Header] AS hd
-                                 WHERE        ([Document Type] = 9) AND (Status = 4 OR
-                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0)) AS TotalVenmesContCred, CONVERT(date, @Fecha, 103) 
-                         AS Fechaparametro
+                                                          Status = 5) AND (YEAR([Document Date]) = YEAR(@Fecha)) AND (MONTH([Document Date]) = MONTH(@Fecha))), 0) AS TotalVenmesContCred, sh.[Document Date]
 FROM            [Sales Header] AS sh</CommandText>
       </Query>
       <Fields>
@@ -262,18 +169,6 @@ FROM            [Sales Header] AS sh</CommandText>
         </Field>
         <Field Name="TOTALNC">
           <DataField>TOTALNC</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TOTfacNcneto">
-          <DataField>TOTfacNcneto</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="TOTAlNCFAC">
-          <DataField>TOTAlNCFAC</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="ITBMSNCFACNeto">
-          <DataField>ITBMSNCFACNeto</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="EFECTIVO">
@@ -340,9 +235,9 @@ FROM            [Sales Header] AS sh</CommandText>
           <DataField>TotalVenmesContCred</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="Fechaparametro">
-          <DataField>Fechaparametro</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+        <Field Name="Document_Date">
+          <DataField>Document_Date</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -934,7 +829,7 @@ FROM            [Sales Header] AS sh</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!ITBMSNC.Value, "DS_R_Diario")*-1</Value>
+                    <Value>=Sum(Fields!ITBMSNC.Value*-1, "DS_R_Diario")</Value>
                     <Style>
                       <Format>#,0.00</Format>
                     </Style>
@@ -971,7 +866,7 @@ FROM            [Sales Header] AS sh</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!TOTALNC.Value, "DS_R_Diario")*-1</Value>
+                    <Value>=Sum(Fields!TOTALNC.Value*-1, "DS_R_Diario")</Value>
                     <Style>
                       <Format>#,0.00</Format>
                     </Style>
@@ -1038,7 +933,7 @@ FROM            [Sales Header] AS sh</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!TOTfacNcneto.Value, "DS_R_Diario")</Value>
+                    <Value>=Sum(Fields!TOTCONTADOdia.Value, "DS_R_Diario")+(Sum(Fields!TOTCONTADOdiaNC.Value, "DS_R_Diario")*-1)</Value>
                     <Style>
                       <Format>#,0.00</Format>
                     </Style>
@@ -1076,7 +971,7 @@ FROM            [Sales Header] AS sh</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!ITBMSNCFACNeto.Value, "DS_R_Diario")</Value>
+                    <Value>=Sum(Fields!ITBMSNC.Value*-1, "DS_R_Diario")+Sum(Fields!ITBMSFAC.Value, "DS_R_Diario")</Value>
                     <Style>
                       <Format>#,0.00</Format>
                     </Style>
@@ -1114,7 +1009,7 @@ FROM            [Sales Header] AS sh</CommandText>
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Sum(Fields!TOTAlNCFAC.Value, "DS_R_Diario")</Value>
+                    <Value>=Sum(Fields!TOTALNC.Value*-1, "DS_R_Diario")+Sum(Fields!TOTALFAC.Value, "DS_R_Diario")</Value>
                     <Style>
                       <Format>#,0.00</Format>
                     </Style>
@@ -1946,7 +1841,7 @@ FROM            [Sales Header] AS sh</CommandText>
             </Style>
           </Textbox>
         </ReportItems>
-        <Height>6.93102in</Height>
+        <Height>7.11852in</Height>
         <Style />
       </Body>
       <Width>7.81128in</Width>
@@ -1995,7 +1890,7 @@ FROM            [Sales Header] AS sh</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Fecha Consultada: " + First(Fields!Fechaparametro.Value, "DS_R_Diario")</Value>
+                      <Value>="Fecha Consultada: " +First(Fields!Document_Date.Value, "DS_R_Diario")</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -2161,38 +2056,6 @@ FROM            [Sales Header] AS sh</CommandText>
               <Left>7.68264cm</Left>
               <Height>0.6cm</Height>
               <Width>4.47537cm</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox1">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Versión 1.2</Value>
-                      <Style>
-                        <FontSize>6pt</FontSize>
-                        <Color>Gray</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.37748cm</Top>
-              <Height>0.36187cm</Height>
-              <Width>2.5cm</Width>
-              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
