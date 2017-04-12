@@ -311,8 +311,12 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AnimoGR">
-      <DataSourceReference>AnimoGR</DataSourceReference>
+    <DataSource Name="AnimoGreenRetail">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=YAILEEN\MSSQLSERVER2016;Initial Catalog=AnimoGreenRetail</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
       <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>d1ff93ce-bb8f-4dd4-b18a-ea30dce2b60f</rd:DataSourceID>
     </DataSource>
@@ -320,7 +324,7 @@
   <DataSets>
     <DataSet Name="DS_TiposIngresos">
       <Query>
-        <DataSourceName>AnimoGR</DataSourceName>
+        <DataSourceName>AnimoGreenRetail</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@Fecha">
             <Value>=Parameters!Fecha.Value</Value>

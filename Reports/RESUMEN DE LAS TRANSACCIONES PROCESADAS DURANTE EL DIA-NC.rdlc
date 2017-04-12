@@ -994,7 +994,7 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>DS_Resu_Diario_nc</DataSetName>
+        <DataSetName>DS_Resu_Diario</DataSetName>
         <Top>0.25306in</Top>
         <Height>0.49418in</Height>
         <Width>7.38047in</Width>
@@ -1335,16 +1335,16 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AnimoGR">
-      <DataSourceReference>AnimoGR</DataSourceReference>
+    <DataSource Name="GRPOS">
+      <DataSourceReference>GRPOS</DataSourceReference>
       <rd:SecurityType>Integrated</rd:SecurityType>
       <rd:DataSourceID>636aa96b-600e-4e56-aea5-e55d740a8d33</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DS_Resu_Diario_nc">
+    <DataSet Name="DS_Resu_Diario">
       <Query>
-        <DataSourceName>AnimoGR</DataSourceName>
+        <DataSourceName>GRPOS</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@Fecha">
             <Value>=Parameters!Fecha.Value</Value>
@@ -1406,9 +1406,9 @@ and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)</CommandText
     </DataSet>
     <DataSet Name="DS_Tienda">
       <Query>
-        <DataSourceName>AnimoGR</DataSourceName>
+        <DataSourceName>GRPOS</DataSourceName>
         <CommandText>SELECT Name  FROM [dbo].[Store]
-  where code='CALLE50'</CommandText>
+  where code=01</CommandText>
       </Query>
       <Fields>
         <Field Name="Name">
