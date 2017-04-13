@@ -9,25 +9,28 @@
               <Width>0.72089in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.9977in</Width>
+              <Width>0.7477in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.86079in</Width>
+              <Width>0.75095in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.67175in</Width>
+              <Width>0.61028in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.90757in</Width>
+              <Width>1.83464in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.73958in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.6875in</Width>
+              <Width>0.57292in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>0.80164in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.91134in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -392,6 +395,53 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox13">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Tot. Recibido</Value>
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox13</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Double</Style>
+                          <Width>1.5pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Double</Style>
+                          <Width>1.5pt</Width>
+                        </BottomBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -660,6 +710,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>TOTAPLI</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Top</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Recibido">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Recibido.Value</Value>
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <Format>#,0.00</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Recibido</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -974,12 +1060,55 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox20">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!Recibido.Value)</Value>
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox20</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Solid</Style>
+                          <Width>1.5pt</Width>
+                        </TopBorder>
+                        <VerticalAlign>Top</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -1017,7 +1146,7 @@
         <Top>0.23959in</Top>
         <Left>0.00005cm</Left>
         <Height>0.46831in</Height>
-        <Width>7.58578in</Width>
+        <Width>7.68994in</Width>
         <Style />
       </Tablix>
       <Subreport Name="Subreport2">
@@ -1030,7 +1159,7 @@
         <Top>0.73915in</Top>
         <Left>0.00005cm</Left>
         <Height>1.65625in</Height>
-        <Width>7.58578in</Width>
+        <Width>7.68994in</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1095,10 +1224,10 @@
     <Height>13.68431cm</Height>
     <Style />
   </Body>
-  <Width>19.26793cm</Width>
+  <Width>19.53249cm</Width>
   <Page>
     <PageHeader>
-      <Height>1.48548cm</Height>
+      <Height>1.52075cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1121,7 +1250,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>0.51506cm</Top>
+          <Top>0.55033cm</Top>
           <Left>3.8305cm</Left>
           <Height>0.175in</Height>
           <Width>11.60693cm</Width>
@@ -1155,7 +1284,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Desde</rd:DefaultName>
-          <Top>0.37778in</Top>
+          <Top>0.39167in</Top>
           <Left>6.53834cm</Left>
           <Height>0.16111in</Height>
           <Width>2.4375in</Width>
@@ -1191,8 +1320,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>UserID</rd:DefaultName>
-          <Left>14.81001cm</Left>
-          <Height>0.175in</Height>
+          <Top>0.10583cm</Top>
+          <Left>15.07457cm</Left>
+          <Height>0.14722in</Height>
           <Width>4.45792cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
@@ -1225,9 +1355,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
-          <Top>0.4445cm</Top>
-          <Left>16.58269cm</Left>
-          <Height>0.175in</Height>
+          <Top>0.55033cm</Top>
+          <Left>16.84725cm</Left>
+          <Height>0.21667in</Height>
           <Width>2.68521cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
@@ -1259,7 +1389,6 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Name</rd:DefaultName>
-          <Top>0.07056cm</Top>
           <Left>5.67389cm</Left>
           <Height>0.175in</Height>
           <Width>7.92016cm</Width>
@@ -1372,34 +1501,40 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="AnimoGreenRetail">
-      <DataSourceReference>AnimoGreenRetail</DataSourceReference>
+    <DataSource Name="AnimoGR">
+      <DataSourceReference>AnimoGR</DataSourceReference>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>6ac7cc90-f114-4ba3-ada4-67dee69552ae</rd:DataSourceID>
+      <rd:DataSourceID>e4828885-1657-4ef4-bce0-17a95228700a</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DS_Resu_Diario">
       <Query>
-        <DataSourceName>AnimoGreenRetail</DataSourceName>
+        <DataSourceName>AnimoGR</DataSourceName>
         <QueryParameters>
           <QueryParameter Name="@Fecha">
             <Value>=Parameters!Fecha.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT SH.[Document Date] FECHA
-, SH.[No Receipt] NUM_DOC
-, SH.[No Transaccion] Num_fac_Sist
-, SH.[Customer No] CodCli
-, SH.[Customer Name] NAMECLI
-, SH.[Subtotal Excl IVA] SUBTOT
-, SH.[IVA Amount] ITBSM 
-, SH.[Total Amount] TOTAPLI
+        <CommandText>SELECT 
+ (select SHI.[Document Date] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) FECHA
+,(select SHI.[No Receipt] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  NUM_DOC
+,(select SHI.[No Transaccion] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) Num_fac_Sist
+,(select SHI.[Customer No]  from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) CodCli
+,(select SHI.[Customer Name]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])   NAMECLI
+,(select SHI.[Subtotal Excl IVA] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) SUBTOT
+,(select SHI.[IVA Amount] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  ITBSM 
+,(select SHI.[Total Amount]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  TOTAPLI
+, (sum(sp.Amount)) Recibido
 ,convert(date,@Fecha,103) Fechaparametro
 FROM [Sales Header] SH
+left outer JOIN [Sales Payment methods] AS sp
+ON (SH.[No Transaccion] = sp.[Transaction No])
 WHERE SH.[Document Type]=8
 AND SH.Status=1
-and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)</CommandText>
+AND (sp.State = 1) 
+and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)
+group by SH.[No Transaccion]</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -1435,6 +1570,10 @@ and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)</CommandText
           <DataField>TOTAPLI</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="Recibido">
+          <DataField>Recibido</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="Fechaparametro">
           <DataField>Fechaparametro</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -1443,7 +1582,7 @@ and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)</CommandText
     </DataSet>
     <DataSet Name="DS_Tienda">
       <Query>
-        <DataSourceName>AnimoGreenRetail</DataSourceName>
+        <DataSourceName>AnimoGR</DataSourceName>
         <CommandText>SELECT        Name
 FROM            Store
 WHERE        (Code = 'CALLE50')</CommandText>
