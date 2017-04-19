@@ -16,8 +16,7 @@
             <Value>=Parameters!Fecha.Value</Value>
           </QueryParameter>
         </QueryParameters>
-        <CommandText>SELECT        sp.[Code Payment Metodth], sp.[Description Payment Metodth] AS DescripMetodoPago, sp.Reference AS Refencia, CAST(SUM(sp.Amount) AS decimal(18, 2)) 
-                         AS Montoxtipo
+        <CommandText>SELECT        sp.[Code Payment Metodth], sp.[Description Payment Metodth] AS DescripMetodoPago, sp.Reference AS Refencia, CAST(SUM(sp.Amount) AS decimal(18, 2)) AS Montoxtipo
 FROM            [Sales Payment methods] AS sp INNER JOIN
                          [Sales Header] AS hd ON hd.[No Transaccion] = sp.[Transaction No]
 WHERE        (hd.[Document Type] = 8) AND (hd.Status &lt;&gt; 0) AND (sp.Prepayment = 1) AND (CONVERT(date, hd.[Document Date], 103) = CONVERT(date, @Fecha, 103))
@@ -461,8 +460,40 @@ ORDER BY sp.[Code Payment Metodth]</CommandText>
               </Border>
             </Style>
           </Tablix>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Versión 1.0</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                      <Color>Silver</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>1.94111cm</Top>
+            <Height>0.39715cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>0.70866in</Height>
+        <Height>0.95866in</Height>
         <Style />
       </Body>
       <Width>4.65067in</Width>
@@ -482,6 +513,11 @@ ORDER BY sp.[Code Payment Metodth]</CommandText>
     <ReportParameter Name="Fecha">
       <DataType>DateTime</DataType>
       <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Now()</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>Fecha</Prompt>
     </ReportParameter>
   </ReportParameters>
