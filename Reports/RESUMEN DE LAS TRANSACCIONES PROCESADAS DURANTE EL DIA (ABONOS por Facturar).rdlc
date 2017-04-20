@@ -5,7 +5,7 @@
     <DataSource Name="GRPOS">
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=NOW-SIST-01\SQLSIST01;Initial Catalog=GR2</ConnectString>
+        <ConnectString>Data Source=Yaileen;Initial Catalog=GRGDA</ConnectString>
         <IntegratedSecurity>true</IntegratedSecurity>
       </ConnectionProperties>
       <rd:DataSourceID>636aa96b-600e-4e56-aea5-e55d740a8d33</rd:DataSourceID>
@@ -34,7 +34,7 @@ from [Sales Header] hd
  [Sales Payment methods] AS sp 
  ON hd.[No Transaccion] = sp.[Transaction No]
 
-WHERE        (hd.[Document Type] = 8) AND (hd.Status &lt;&gt; 1) and sp.Prepayment=1
+WHERE        (hd.[Document Type] = 8) AND (hd.Status =0 or hd.Status =7 ) and sp.Prepayment=1
 AND (CONVERT(date, hd.[Document Date], 103) = CONVERT(date, @Fecha, 103))
 GROUP BY  hd.[No Receipt], hd.[Customer No], hd.[Document Date], hd.[Customer Name], hd.[Salesperson Code], hd.[Total Amount]
 ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
@@ -68,10 +68,6 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
         <Field Name="abono">
           <DataField>abono</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Document_Date">
-          <DataField>Document_Date</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
     </DataSet>
@@ -136,6 +132,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Fecha</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -169,6 +166,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Núm. Documento</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -202,6 +200,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Vendedor</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -235,6 +234,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Código</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -268,6 +268,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Nombre</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -301,6 +302,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Total</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -336,6 +338,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Abono</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -371,6 +374,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                 <TextRun>
                                   <Value>Saldo</Value>
                                   <Style>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -412,6 +416,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!FECHA.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>d</Format>
                                   </Style>
                                 </TextRun>
@@ -445,6 +450,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!NUM_DOC.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -477,6 +483,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!VENDEDOR.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -509,6 +516,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!CodCli.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -541,6 +549,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!NAMECLI.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -573,6 +582,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!Total_Amount.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -606,6 +616,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!abono.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -639,6 +650,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Fields!Total_Amount.Value-Fields!abono.Value</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <Format>#,0.00</Format>
                                   </Style>
                                 </TextRun>
@@ -677,6 +689,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -709,6 +722,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -741,6 +755,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -773,6 +788,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -805,6 +821,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value />
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -837,6 +854,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Sum(Fields!Total_Amount.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -876,6 +894,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=Sum(Fields!abono.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>0.00</Format>
                                   </Style>
@@ -915,6 +934,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                                   <Value>=sum(Fields!Total_Amount.Value-Fields!abono.Value)</Value>
                                   <Style>
                                     <FontFamily>Tahoma</FontFamily>
+                                    <FontSize>8pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>#,0.00</Format>
                                   </Style>
@@ -1021,8 +1041,41 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Versión 1.0</Value>
+                    <Style>
+                      <FontSize>6pt</FontSize>
+                      <Color>Silver</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>3.45299cm</Top>
+            <Left>0.04cm</Left>
+            <Height>0.36187cm</Height>
+            <Width>2.5cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>3.51472cm</Height>
+        <Height>3.88514cm</Height>
         <Style />
       </Body>
       <Width>18.64856cm</Width>
@@ -1039,9 +1092,8 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>RESUMEN DE LAS TRANSACCIONES PROCESADAS DURANTE EL DIA (ABONOS)</Value>
+                      <Value>RESUMEN DE LAS TRANSACCIONES PROCESADAS DURANTE EL DIA (ABONOS POR FACTURAR)</Value>
                       <Style>
-                        <FontSize>12pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1073,7 +1125,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>="Fecha Consultada: " +First(Fields!Document_Date.Value, "DataSet1")</Value>
+                      <Value>="Fecha Consultada: " +Parameters!Fecha.Value</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -1109,7 +1161,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=User!UserID</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>6pt</FontSize>
                         <Color>Gray</Color>
                       </Style>
                     </TextRun>
@@ -1144,7 +1196,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=Globals!ExecutionTime</Value>
                       <Style>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>6pt</FontSize>
                         <Color>Gray</Color>
                       </Style>
                     </TextRun>
@@ -1179,7 +1231,7 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
                     <TextRun>
                       <Value>=First(Fields!Name.Value, "DS_Tienda")</Value>
                       <Style>
-                        <FontSize>12pt</FontSize>
+                        <FontSize>11pt</FontSize>
                         <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
@@ -1227,6 +1279,11 @@ ORDER BY hd.[Document Date],  hd.[No Receipt]</CommandText>
     <ReportParameter Name="Fecha">
       <DataType>DateTime</DataType>
       <Nullable>true</Nullable>
+      <DefaultValue>
+        <Values>
+          <Value>=Now()</Value>
+        </Values>
+      </DefaultValue>
       <Prompt>Fecha</Prompt>
     </ReportParameter>
   </ReportParameters>

@@ -9,33 +9,36 @@
               <Width>0.72089in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.7477in</Width>
+              <Width>0.58103in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.75095in</Width>
+              <Width>0.64678in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.61028in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.83464in</Width>
+              <Width>1.71321in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.73958in</Width>
+              <Width>0.80551in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.57292in</Width>
+              <Width>0.54167in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.80164in</Width>
+              <Width>0.45834in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.91134in</Width>
+              <Width>0.80504in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>0.80717in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.17834in</Height>
+              <Height>0.27209in</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -259,6 +262,51 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox19">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Método de Pago</Value>
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox19</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <TopBorder>
+                          <Color>Black</Color>
+                          <Style>Double</Style>
+                          <Width>1.5pt</Width>
+                        </TopBorder>
+                        <BottomBorder>
+                          <Color>Black</Color>
+                          <Style>Double</Style>
+                          <Width>1.5pt</Width>
+                        </BottomBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox15">
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -366,7 +414,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -605,6 +653,41 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>NAMECLI</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <VerticalAlign>Top</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Metodo">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Iif(Fields!Metodo.Value="01","EFECTIVO",iif(Fields!Metodo.Value="02","VISA",iif(Fields!Metodo.Value="03", "CLAVE",IIF(Fields!Metodo.Value="09", "MASTER",(IIF(Fields!Metodo.Value="10", "AMEX",""))))))</Value>
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>7pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Metodo</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -936,6 +1019,40 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox22">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontFamily>Courier New</FontFamily>
+                                <FontSize>8pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox22</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox10">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -1117,6 +1234,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -1145,8 +1263,8 @@
         <DataSetName>DS_Resu_Diario</DataSetName>
         <Top>0.23959in</Top>
         <Left>0.00005cm</Left>
-        <Height>0.46831in</Height>
-        <Width>7.68994in</Width>
+        <Height>0.56206in</Height>
+        <Width>7.68993in</Width>
         <Style />
       </Tablix>
       <Subreport Name="Subreport2">
@@ -1156,9 +1274,9 @@
             <Value>=Parameters!Fecha.Value</Value>
           </Parameter>
         </Parameters>
-        <Top>0.73915in</Top>
+        <Top>0.97526in</Top>
         <Left>0.00005cm</Left>
-        <Height>1.65625in</Height>
+        <Height>1.11111in</Height>
         <Width>7.68994in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -1212,7 +1330,7 @@
         </Parameters>
         <Top>6.08431cm</Top>
         <Height>7.6cm</Height>
-        <Width>19.2679cm</Width>
+        <Width>19.53246cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -1224,7 +1342,7 @@
     <Height>13.68431cm</Height>
     <Style />
   </Body>
-  <Width>19.53249cm</Width>
+  <Width>19.5325cm</Width>
   <Page>
     <PageHeader>
       <Height>1.52075cm</Height>
@@ -1517,24 +1635,27 @@
           </QueryParameter>
         </QueryParameters>
         <CommandText>SELECT 
- (select SHI.[Document Date] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) FECHA
-,(select SHI.[No Receipt] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  NUM_DOC
-,(select SHI.[No Transaccion] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) Num_fac_Sist
-,(select SHI.[Customer No]  from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) CodCli
-,(select SHI.[Customer Name]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])   NAMECLI
-,(select SHI.[Subtotal Excl IVA] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion]) SUBTOT
-,(select SHI.[IVA Amount] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  ITBSM 
-,(select SHI.[Total Amount]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion])  TOTAPLI
-, (sum(sp.Amount)) Recibido
-,convert(date,@Fecha,103) Fechaparametro
-FROM [Sales Header] SH
-left outer JOIN [Sales Payment methods] AS sp
-ON (SH.[No Transaccion] = sp.[Transaction No])
-WHERE SH.[Document Type]=8
-AND SH.Status=1
+ (select top 1 SHI.[Document Date] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 ) FECHA 
+,(select top 1 SHI.[No Receipt] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 )  NUM_DOC 
+,(select top 1 SHI.[No Transaccion] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 ) Num_fac_Sist 
+,(select top 1 SHI.[Customer No]  from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 ) CodCli 
+,(select top 1 SHI.[Customer Name]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 )   NAMECLI 
+,(select top 1 SHI.[Subtotal Excl IVA] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 ) SUBTOT 
+,(select top 1 SHI.[IVA Amount] from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no]  AND SHI.Status=1 )  ITBSM 
+,(select top 1 SHI.[Total Amount]from [Sales Header] SHI where shi.[No Transaccion]=sh.[No Transaccion] AND shi.[document type]=sh.[document type] and shi.[no receipt]= sh.[no receipt] and shi.[terminal no]=sh.[terminal no] and shi.[store no]=sh.[store no] and shi.[customer no]=sh.[customer no] AND SHI.Status=1 )  TOTAPLI
+, (sum(sp.Amount)) Recibido 
+,(CASE WHEN [Code Payment Metodth] = '08' THEN OriginalPaymentMethod 
+	   WHEN [Code Payment Metodth] = '02' THEN Reference ELSE [Code Payment Metodth] END )AS Metodo 
+,convert(date,@Fecha,103) Fechaparametro 
+FROM [Sales Header] SH 
+left outer JOIN [Sales Payment methods] AS sp 
+ON (SH.[No Transaccion] = sp.[Transaction No]) 
+WHERE SH.[Document Type]=8 
+AND SH.Status=1 
 AND (sp.State = 1) 
-and convert(date,sh.[Document Date],103) = convert(date,@Fecha,103)
-group by SH.[No Transaccion]</CommandText>
+and convert(date,sh.[Document Date],103) =  convert(date,@Fecha,103)
+group by sh.[store no],sh.[terminal no],sh.[document type],sh.[No Transaccion],sh.[no receipt],sh.[customer no], sp.[Code Payment Metodth], sp.OriginalPaymentMethod, sp.Reference, sp.[Description Payment Metodth]
+order by NUM_DOC</CommandText>
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <Fields>
@@ -1574,6 +1695,10 @@ group by SH.[No Transaccion]</CommandText>
           <DataField>Recibido</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="Metodo">
+          <DataField>Metodo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Fechaparametro">
           <DataField>Fechaparametro</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
@@ -1583,11 +1708,14 @@ group by SH.[No Transaccion]</CommandText>
     <DataSet Name="DS_Tienda">
       <Query>
         <DataSourceName>AnimoGR</DataSourceName>
-        <CommandText>SELECT        Name
-FROM            Store
-WHERE        (Code = 'CALLE50')</CommandText>
+        <CommandText>SELECT        Code, Name
+FROM            Store</CommandText>
       </Query>
       <Fields>
+        <Field Name="Code">
+          <DataField>Code</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="Name">
           <DataField>Name</DataField>
           <rd:TypeName>System.String</rd:TypeName>
