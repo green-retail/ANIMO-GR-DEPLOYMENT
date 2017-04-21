@@ -96,6 +96,9 @@
         <Field Name="FirmaCliente">
           <DataField>FirmaCliente</DataField>
         </Field>
+        <Field Name="FirmaAnimo">
+          <DataField>FirmaAnimo</DataField>
+        </Field>
         <Field Name="Name_ResponsibilityCenter">
           <DataField>Name_ResponsibilityCenter</DataField>
         </Field>
@@ -128,14 +131,19 @@
             <Value>=First(Fields!FirmaCliente.Value, "DataSet_Result")</Value>
             <MIMEType>image/png</MIMEType>
             <Sizing>Fit</Sizing>
-            <Top>80.07032cm</Top>
-            <Left>1.63349cm</Left>
-            <Height>2.1509cm</Height>
-            <Width>3.90848cm</Width>
+            <Top>84.28072cm</Top>
+            <Left>1.96375cm</Left>
+            <Height>1.41466cm</Height>
+            <Width>3.0004cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
             </Style>
           </Image>
           <Textbox Name="Textbox26">
@@ -156,7 +164,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>0.17772in</Left>
             <Height>0.15625in</Height>
             <Width>0.25in</Width>
@@ -222,7 +230,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>1.98833in</Top>
+            <Top>1.61333in</Top>
             <Left>0.10272in</Left>
             <Height>0.20833in</Height>
             <Width>1.29167in</Width>
@@ -255,7 +263,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>1.98834in</Top>
+            <Top>1.61334in</Top>
             <Left>4.68106in</Left>
             <Height>0.20833in</Height>
             <Width>1.11459in</Width>
@@ -289,7 +297,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.26667in</Top>
+            <Top>1.89167in</Top>
             <Left>0.11523in</Left>
             <Height>0.20833in</Height>
             <Width>0.60417in</Width>
@@ -323,7 +331,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.51458in</Top>
+            <Top>2.13958in</Top>
             <Left>4.68106in</Left>
             <Height>0.20833in</Height>
             <Width>0.76124in</Width>
@@ -357,7 +365,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.96527in</Top>
+            <Top>2.59027in</Top>
             <Left>0.10273in</Left>
             <Height>0.20833in</Height>
             <Width>0.73959in</Width>
@@ -391,7 +399,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.96527in</Top>
+            <Top>2.59027in</Top>
             <Left>2.81334in</Left>
             <Height>0.20833in</Height>
             <Width>1.37501in</Width>
@@ -425,7 +433,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.96527in</Top>
+            <Top>2.59027in</Top>
             <Left>5.50084in</Left>
             <Height>0.20833in</Height>
             <Width>0.46876in</Width>
@@ -459,7 +467,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.41354in</Top>
+            <Top>3.03854in</Top>
             <Left>0.10272in</Left>
             <Height>0.20833in</Height>
             <Width>1.44792in</Width>
@@ -493,7 +501,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.43854in</Top>
+            <Top>3.06354in</Top>
             <Left>2.81333in</Left>
             <Height>0.20833in</Height>
             <Width>1.37501in</Width>
@@ -527,7 +535,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.41354in</Top>
+            <Top>3.03854in</Top>
             <Left>5.50083in</Left>
             <Height>0.20833in</Height>
             <Width>1.07293in</Width>
@@ -561,7 +569,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.86459in</Top>
+            <Top>3.48959in</Top>
             <Left>0.1096in</Left>
             <Height>0.20833in</Height>
             <Width>1.44792in</Width>
@@ -594,7 +602,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.86459in</Top>
+            <Top>3.48959in</Top>
             <Left>2.82021in</Left>
             <Height>0.20833in</Height>
             <Width>1.63459in</Width>
@@ -628,7 +636,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>3.86459in</Top>
+            <Top>3.48959in</Top>
             <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>1.07293in</Width>
@@ -662,7 +670,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.31564in</Top>
+            <Top>3.94064in</Top>
             <Left>0.1096in</Left>
             <Height>0.20833in</Height>
             <Width>1.44792in</Width>
@@ -696,7 +704,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.31564in</Top>
+            <Top>3.94064in</Top>
             <Left>2.82021in</Left>
             <Height>0.20833in</Height>
             <Width>1.37501in</Width>
@@ -730,7 +738,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.31564in</Top>
+            <Top>3.94064in</Top>
             <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>1.07293in</Width>
@@ -764,7 +772,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.74169in</Top>
+            <Top>4.36669in</Top>
             <Left>0.10272in</Left>
             <Height>0.1875in</Height>
             <Width>1.44792in</Width>
@@ -798,7 +806,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.74169in</Top>
+            <Top>4.36669in</Top>
             <Left>2.81333in</Left>
             <Height>0.20833in</Height>
             <Width>1.37501in</Width>
@@ -832,8 +840,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>4.74169in</Top>
-            <Left>5.50083in</Left>
+            <Top>4.36669in</Top>
+            <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>1.07293in</Width>
             <ZIndex>21</ZIndex>
@@ -866,10 +874,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.39757in</Top>
+            <Top>5.02257in</Top>
             <Left>0.1096in</Left>
             <Height>0.20833in</Height>
-            <Width>0.73271in</Width>
+            <Width>0.94382in</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
@@ -900,10 +908,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.39757in</Top>
-            <Left>5.11188in</Left>
+            <Top>5.02257in</Top>
+            <Left>4.90813in</Left>
             <Height>0.20833in</Height>
-            <Width>0.71596in</Width>
+            <Width>0.91971in</Width>
             <ZIndex>23</ZIndex>
             <Style>
               <Border>
@@ -932,9 +940,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.63368in</Top>
+            <Top>5.25868in</Top>
             <Left>0.1096in</Left>
-            <Height>0.20833in</Height>
+            <Height>0.25396in</Height>
             <Width>7.34437in</Width>
             <ZIndex>24</ZIndex>
             <Style>
@@ -963,7 +971,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>0.20272in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -988,7 +996,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>0.96731in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1013,7 +1021,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>1.74876in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1038,7 +1046,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>2.51335in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1063,7 +1071,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>3.2672in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1088,7 +1096,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>4.15679in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1113,7 +1121,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>4.93825in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1138,7 +1146,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>5.70283in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1167,7 +1175,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>0.80272in</Left>
             <Height>0.15625in</Height>
             <Width>0.50159in</Width>
@@ -1200,7 +1208,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>1.64022in</Left>
             <Height>0.15625in</Height>
             <Width>0.43056in</Width>
@@ -1233,7 +1241,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>2.39022in</Left>
             <Height>0.15625in</Height>
             <Width>0.37313in</Width>
@@ -1266,10 +1274,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
-            <Left>3.11363in</Left>
-            <Height>0.32292in</Height>
-            <Width>0.47917in</Width>
+            <Top>5.62653in</Top>
+            <Left>2.92971in</Left>
+            <Height>0.15625in</Height>
+            <Width>0.82014in</Width>
             <ZIndex>36</ZIndex>
             <Style>
               <Border>
@@ -1299,10 +1307,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
-            <Left>3.95321in</Left>
-            <Height>0.32292in</Height>
-            <Width>0.50159in</Width>
+            <Top>5.62653in</Top>
+            <Left>3.89071in</Left>
+            <Height>0.15625in</Height>
+            <Width>0.65841in</Width>
             <ZIndex>37</ZIndex>
             <Style>
               <Border>
@@ -1332,7 +1340,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>4.68106in</Left>
             <Height>0.15625in</Height>
             <Width>0.66521in</Width>
@@ -1365,7 +1373,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>5.59071in</Left>
             <Height>0.15625in</Height>
             <Width>0.37313in</Width>
@@ -1394,7 +1402,7 @@
               </Rectangle>
             </ReportItems>
             <KeepTogether>true</KeepTogether>
-            <Top>5.91542in</Top>
+            <Top>5.54042in</Top>
             <Left>6.50452in</Left>
             <Height>0.10417in</Height>
             <Width>0.125in</Width>
@@ -1423,7 +1431,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox26</rd:DefaultName>
-            <Top>6.00153in</Top>
+            <Top>5.62653in</Top>
             <Left>6.37157in</Left>
             <Height>0.15625in</Height>
             <Width>0.51896in</Width>
@@ -1523,20 +1531,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>.  El  socio  reconoce  y  acepta,  que esta cifra corresponde  </Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>General</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>a  la cuota  mensual  regular  de    </Value>
+                    <Value>.  El  socio  reconoce  y  acepta,  que esta cifra corresponde  a  la cuota  mensual  regular  de    </Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -1549,21 +1544,8 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>. Si  por  alguna  razón  el  socio  dejase  de  cubrir  sus  mensualidades  y   quisiera </Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>General</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>reintegrarse deberá  ponerse  al día  con las cuotas pendientes.
-4.  Tarifa  de  Renovación  Anual  de  Membresía:  Al vencer el año de membresía, </Value>
+                    <Value>. Si  por  alguna  razón  el  socio  dejase  de  cubrir  sus  mensualidades  y   quisiera reintegrarse deberá  ponerse  al día  con las cuotas pendientes.
+3.  Tarifa  de  Renovación  Anual  de  Membresía:  Al vencer el año de membresía, </Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -1590,13 +1572,13 @@
                   </TextRun>
                   <TextRun>
                     <Value>   más   impuestos,   adicional  a  su  facturación   mensual  correspondiente,  mismo  que  cubrirá  la renovación de su membresía por el siguiente período anual.
-</Value>
+4</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>3. Términos  del  Contrato:   Este  contrato   es   por tiempo indefinido, a menos que el socio manifieste expresamente, por escrito, con quince (15)  días  antes  de  la fecha establecida por ANIMO de sus cobros mensuales, su decisión de dar por terminado el contrato.</Value>
+                    <Value>. Términos  del  Contrato:   Este  contrato   es   por tiempo indefinido, a menos que el socio manifieste expresamente, por escrito, con quince (15)  días  antes  de  la fecha establecida por ANIMO de sus cobros mensuales, su decisión de dar por terminado el contrato.</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -1616,9 +1598,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox35</rd:DefaultName>
-            <Top>6.65912in</Top>
+            <Top>6.15912in</Top>
             <Left>0.20272in</Left>
-            <Height>1.92708in</Height>
+            <Height>2.29166in</Height>
             <Width>7.21437in</Width>
             <ZIndex>42</ZIndex>
             <Style>
@@ -1647,7 +1629,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>6.38412in</Top>
+            <Top>5.88412in</Top>
             <Left>0.1096in</Left>
             <Height>0.20833in</Height>
             <Width>7.34437in</Width>
@@ -1682,7 +1664,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>8.78412in</Top>
+            <Top>8.77162in</Top>
             <Left>0.20272in</Left>
             <Height>0.20833in</Height>
             <Width>0.97659in</Width>
@@ -1716,7 +1698,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.00912in</Top>
+            <Top>9.34662in</Top>
             <Left>0.1096in</Left>
             <Height>0.20833in</Height>
             <Width>7.34437in</Width>
@@ -1751,7 +1733,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.50391in</Top>
+            <Top>9.84141in</Top>
             <Left>0.21585in</Left>
             <Height>0.20833in</Height>
             <Width>1.59742in</Width>
@@ -1785,7 +1767,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.51432in</Top>
+            <Top>9.85182in</Top>
             <Left>4.53179in</Left>
             <Height>0.20833in</Height>
             <Width>1.55705in</Width>
@@ -1802,7 +1784,7 @@
             </Style>
           </Textbox>
           <Line Name="Line11">
-            <Top>9.71224in</Top>
+            <Top>10.04974in</Top>
             <Left>6.1173in</Left>
             <Height>0in</Height>
             <Width>1.14979in</Width>
@@ -1831,7 +1813,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.24522in</Top>
+            <Top>9.58272in</Top>
             <Left>0.21585in</Left>
             <Height>0.20833in</Height>
             <Width>2.6979in</Width>
@@ -1865,7 +1847,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.25912in</Top>
+            <Top>9.59662in</Top>
             <Left>4.90813in</Left>
             <Height>0.20833in</Height>
             <Width>2.0326in</Width>
@@ -1899,7 +1881,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.75391in</Top>
+            <Top>10.09141in</Top>
             <Left>0.21585in</Left>
             <Height>0.20833in</Height>
             <Width>0.84888in</Width>
@@ -1933,7 +1915,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>9.76432in</Top>
+            <Top>10.10182in</Top>
             <Left>4.53179in</Left>
             <Height>0.20833in</Height>
             <Width>0.91051in</Width>
@@ -1950,7 +1932,7 @@
             </Style>
           </Textbox>
           <Line Name="Line13">
-            <Top>9.96224in</Top>
+            <Top>10.29974in</Top>
             <Left>5.58271in</Left>
             <Height>0in</Height>
             <Width>1.68438in</Width>
@@ -1979,7 +1961,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>10.02891in</Top>
+            <Top>10.36641in</Top>
             <Left>0.21585in</Left>
             <Height>0.20833in</Height>
             <Width>1.47367in</Width>
@@ -2013,10 +1995,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>10.03932in</Top>
+            <Top>10.37682in</Top>
             <Left>4.53313in</Left>
             <Height>0.20833in</Height>
-            <Width>1.41281in</Width>
+            <Width>1.55571in</Width>
             <ZIndex>55</ZIndex>
             <Style>
               <Border>
@@ -2030,7 +2012,7 @@
             </Style>
           </Textbox>
           <Line Name="Line15">
-            <Top>10.23724in</Top>
+            <Top>10.57474in</Top>
             <Left>5.95262in</Left>
             <Height>0in</Height>
             <Width>1.31447in</Width>
@@ -2140,7 +2122,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox47</rd:DefaultName>
-            <Top>10.3425in</Top>
+            <Top>10.68in</Top>
             <Left>0.22355in</Left>
             <Height>1.03468in</Height>
             <Width>7.23042in</Width>
@@ -2182,7 +2164,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>11.44662in</Top>
+            <Top>11.78412in</Top>
             <Left>0.10272in</Left>
             <Height>0.59375in</Height>
             <Width>7.35125in</Width>
@@ -2200,7 +2182,7 @@
             </Style>
           </Textbox>
           <Line Name="Line16">
-            <Top>12.33724in</Top>
+            <Top>12.67474in</Top>
             <Left>3.96439in</Left>
             <Height>0in</Height>
             <Width>1.1027in</Width>
@@ -2228,7 +2210,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.13932in</Top>
+            <Top>12.47682in</Top>
             <Left>2.89221in</Left>
             <Height>0.20833in</Height>
             <Width>1.1501in</Width>
@@ -2245,7 +2227,7 @@
             </Style>
           </Textbox>
           <Line Name="Line17">
-            <Top>12.32683in</Top>
+            <Top>12.66433in</Top>
             <Left>0.85334in</Left>
             <Height>0in</Height>
             <Width>1.63541in</Width>
@@ -2273,7 +2255,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.12891in</Top>
+            <Top>12.46641in</Top>
             <Left>0.34085in</Left>
             <Height>0.20833in</Height>
             <Width>0.62646in</Width>
@@ -2306,7 +2288,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.14662in</Top>
+            <Top>12.48412in</Top>
             <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>0.58113in</Width>
@@ -2323,7 +2305,7 @@
             </Style>
           </Textbox>
           <Line Name="Line18">
-            <Top>12.33828in</Top>
+            <Top>12.67578in</Top>
             <Left>6.0672in</Left>
             <Height>0in</Height>
             <Width>0.87353in</Width>
@@ -2335,7 +2317,7 @@
             </Style>
           </Line>
           <Line Name="Line19">
-            <Top>12.60859in</Top>
+            <Top>12.94609in</Top>
             <Left>3.96439in</Left>
             <Height>0in</Height>
             <Width>1.1027in</Width>
@@ -2363,7 +2345,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.41067in</Top>
+            <Top>12.74817in</Top>
             <Left>2.89221in</Left>
             <Height>0.20833in</Height>
             <Width>1.1501in</Width>
@@ -2380,7 +2362,7 @@
             </Style>
           </Textbox>
           <Line Name="Line20">
-            <Top>12.59818in</Top>
+            <Top>12.93568in</Top>
             <Left>0.85334in</Left>
             <Height>0in</Height>
             <Width>1.63541in</Width>
@@ -2408,7 +2390,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.40026in</Top>
+            <Top>12.73776in</Top>
             <Left>0.34085in</Left>
             <Height>0.20833in</Height>
             <Width>0.62646in</Width>
@@ -2441,7 +2423,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.41797in</Top>
+            <Top>12.75547in</Top>
             <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>0.58113in</Width>
@@ -2458,7 +2440,7 @@
             </Style>
           </Textbox>
           <Line Name="Line21">
-            <Top>12.60963in</Top>
+            <Top>12.94713in</Top>
             <Left>6.0672in</Left>
             <Height>0in</Height>
             <Width>0.87353in</Width>
@@ -2470,7 +2452,7 @@
             </Style>
           </Line>
           <Line Name="Line22">
-            <Top>12.88346in</Top>
+            <Top>13.22096in</Top>
             <Left>3.96439in</Left>
             <Height>0in</Height>
             <Width>1.1027in</Width>
@@ -2498,7 +2480,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.68554in</Top>
+            <Top>13.02304in</Top>
             <Left>2.89221in</Left>
             <Height>0.20833in</Height>
             <Width>1.1501in</Width>
@@ -2515,7 +2497,7 @@
             </Style>
           </Textbox>
           <Line Name="Line23">
-            <Top>12.87305in</Top>
+            <Top>13.21055in</Top>
             <Left>0.85334in</Left>
             <Height>0in</Height>
             <Width>1.63541in</Width>
@@ -2543,7 +2525,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.67513in</Top>
+            <Top>13.01263in</Top>
             <Left>0.34085in</Left>
             <Height>0.20833in</Height>
             <Width>0.62646in</Width>
@@ -2576,7 +2558,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>12.69284in</Top>
+            <Top>13.03034in</Top>
             <Left>5.50771in</Left>
             <Height>0.20833in</Height>
             <Width>0.58113in</Width>
@@ -2593,7 +2575,7 @@
             </Style>
           </Textbox>
           <Line Name="Line24">
-            <Top>12.8845in</Top>
+            <Top>13.222in</Top>
             <Left>6.0672in</Left>
             <Height>0in</Height>
             <Width>0.87353in</Width>
@@ -2621,7 +2603,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox58</rd:DefaultName>
-            <Top>13.05083in</Top>
+            <Top>13.38833in</Top>
             <Left>0.21105in</Left>
             <Height>0.25in</Height>
             <Width>7.24292in</Width>
@@ -2654,7 +2636,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>13.47792in</Top>
+            <Top>13.97792in</Top>
             <Left>0.17147in</Left>
             <Height>0.24011in</Height>
             <Width>0.89326in</Width>
@@ -2687,7 +2669,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>13.47792in</Top>
+            <Top>13.97792in</Top>
             <Left>1.48091in</Left>
             <Height>0.23958in</Height>
             <Width>0.26695in</Width>
@@ -2720,7 +2702,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>13.49234in</Top>
+            <Top>13.99234in</Top>
             <Left>2.61363in</Left>
             <Height>0.22569in</Height>
             <Width>0.46262in</Width>
@@ -2753,7 +2735,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>13.47845in</Top>
+            <Top>13.97845in</Top>
             <Left>3.58939in</Left>
             <Height>0.23905in</Height>
             <Width>0.59885in</Width>
@@ -2768,18 +2750,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line29">
-            <Top>13.7175in</Top>
-            <Left>4.26522in</Left>
-            <Height>0in</Height>
-            <Width>1.56542in</Width>
-            <ZIndex>82</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox63">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -2798,11 +2768,11 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>13.82861in</Top>
+            <Top>14.32861in</Top>
             <Left>0.17147in</Left>
             <Height>0.24306in</Height>
             <Width>1.29167in</Width>
-            <ZIndex>83</ZIndex>
+            <ZIndex>82</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -2813,186 +2783,6 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox64">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Nombre de Vendedor: 				</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>14.20372in</Top>
-            <Left>0.17147in</Left>
-            <Height>0.23905in</Height>
-            <Width>1.37917in</Width>
-            <ZIndex>84</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line31">
-            <Top>14.44277in</Top>
-            <Left>1.59105in</Left>
-            <Height>0in</Height>
-            <Width>0.60472in</Width>
-            <ZIndex>85</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox65">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value># Sistema:				</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>14.20319in</Top>
-            <Left>2.19022in</Left>
-            <Height>0.21789in</Height>
-            <Width>0.72353in</Width>
-            <ZIndex>86</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line32">
-            <Top>14.43027in</Top>
-            <Left>2.82613in</Left>
-            <Height>0in</Height>
-            <Width>0.51667in</Width>
-            <ZIndex>87</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox66">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Revisado por:				</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>14.20372in</Top>
-            <Left>3.32821in</Left>
-            <Height>0.21736in</Height>
-            <Width>0.86701in</Width>
-            <ZIndex>88</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line33">
-            <Top>14.43497in</Top>
-            <Left>4.16741in</Left>
-            <Height>0in</Height>
-            <Width>0.80681in</Width>
-            <ZIndex>89</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
-          <Textbox Name="Textbox67">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Gte. Sucursal:				</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>14.20372in</Top>
-            <Left>4.9923in</Left>
-            <Height>0.23905in</Height>
-            <Width>0.86646in</Width>
-            <ZIndex>90</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Line Name="Line34">
-            <Top>14.44277in</Top>
-            <Left>5.79657in</Left>
-            <Height>0in</Height>
-            <Width>0.61198in</Width>
-            <ZIndex>91</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox70">
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
@@ -3000,6 +2790,51 @@
                 <TextRuns>
                   <TextRun>
                     <Value>LEA DETENIDAMENTE ESTE CONTRATO ANTES DE FIRMAR</Value>
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -3367,20 +3202,7 @@ Entiéndase   por  comportamiento  inadecuado, entrenamiento personalizado dicta
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>y a la buena convivencia que debe prevalecer en las instalaciones. (Ver Art. 6 Prohibiciones).</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>
+                    <Value>y a la buena convivencia que debe prevalecer en las instalaciones. (Ver Art. 6 Prohibiciones).
 De  igual  forma,  </Value>
                     <Style>
                       <FontSize>9pt</FontSize>
@@ -4013,36 +3835,7 @@ El  hecho que </Value>
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>, o ejerza los derechos convencionales o legales de los cuales es titular.
-</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>9.	CANCELACIONES:</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>
-El socio podrá cancelar este contrato por escrito mediante el formulario de cancelación que deberá solicitar personalmente en la sucursal </Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>ANIMO </Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>de su preferencia.  La cancelación se hará efectiva a los 15 días luego de la entrega del formulario.   
-</Value>
+                    <Value>, o ejerza los derechos convencionales o legales de los cuales es titular.</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -4052,13 +3845,29 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
                   <TextAlign>Left</TextAlign>
                 </Style>
               </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox70</rd:DefaultName>
-            <Top>14.78in</Top>
-            <Left>0.17147in</Left>
-            <Height>14.45139in</Height>
+            <Top>15.405in</Top>
+            <Left>0.18315in</Left>
+            <Height>14.2625in</Height>
             <Width>7.2825in</Width>
-            <ZIndex>92</ZIndex>
+            <ZIndex>83</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4086,11 +3895,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>No_Customer</rd:DefaultName>
-            <Top>1.98834in</Top>
+            <Top>1.61334in</Top>
             <Left>5.8512in</Left>
             <Height>0.20833in</Height>
             <Width>1.35277in</Width>
-            <ZIndex>93</ZIndex>
+            <ZIndex>84</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4125,11 +3934,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FechaIngreso_Customer</rd:DefaultName>
-            <Top>2.26667in</Top>
+            <Top>1.89167in</Top>
             <Left>0.76106in</Left>
             <Height>0.20833in</Height>
             <Width>1.44721in</Width>
-            <ZIndex>94</ZIndex>
+            <ZIndex>85</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4161,11 +3970,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Name_ResponsibilityCenter</rd:DefaultName>
-            <Top>2.51458in</Top>
+            <Top>2.13958in</Top>
             <Left>5.4423in</Left>
             <Height>0.20833in</Height>
             <Width>1.76167in</Width>
-            <ZIndex>95</ZIndex>
+            <ZIndex>86</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4196,11 +4005,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>VATRegistrationNo_Customer</rd:DefaultName>
-            <Top>3.22916in</Top>
+            <Top>2.85416in</Top>
             <Left>2.82021in</Left>
             <Height>0.17049in</Height>
             <Width>2.27784in</Width>
-            <ZIndex>96</ZIndex>
+            <ZIndex>87</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4234,11 +4043,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Edad_Customer</rd:DefaultName>
-            <Top>3.22916in</Top>
+            <Top>2.85416in</Top>
             <Left>5.50771in</Left>
             <Height>0.17049in</Height>
             <Width>1.21875in</Width>
-            <ZIndex>97</ZIndex>
+            <ZIndex>88</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4273,11 +4082,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>EMail_Customer</rd:DefaultName>
-            <Top>3.64965in</Top>
+            <Top>3.27465in</Top>
             <Left>0.1096in</Left>
             <Height>0.18716in</Height>
             <Width>1.51416in</Width>
-            <ZIndex>98</ZIndex>
+            <ZIndex>89</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4308,11 +4117,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TipoSangre_Customer</rd:DefaultName>
-            <Top>3.64965in</Top>
+            <Top>3.27465in</Top>
             <Left>5.50083in</Left>
             <Height>0.18716in</Height>
             <Width>1in</Width>
-            <ZIndex>99</ZIndex>
+            <ZIndex>90</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4343,11 +4152,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>EstadoCivil_Customer</rd:DefaultName>
-            <Top>4.07861in</Top>
+            <Top>3.70361in</Top>
             <Left>0.1096in</Left>
             <Height>0.19536in</Height>
             <Width>1.51416in</Width>
-            <ZIndex>100</ZIndex>
+            <ZIndex>91</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4378,11 +4187,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Address_Customer</rd:DefaultName>
-            <Top>4.08681in</Top>
+            <Top>3.71181in</Top>
             <Left>2.11647in</Left>
             <Height>0.18716in</Height>
             <Width>2.95062in</Width>
-            <ZIndex>101</ZIndex>
+            <ZIndex>92</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4413,11 +4222,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PhoneNo_Customer</rd:DefaultName>
-            <Top>4.07861in</Top>
+            <Top>3.70361in</Top>
             <Left>5.50771in</Left>
             <Height>0.19536in</Height>
             <Width>1.21875in</Width>
-            <ZIndex>102</ZIndex>
+            <ZIndex>93</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4450,11 +4259,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DireccionTrabajo_Customer</rd:DefaultName>
-            <Top>4.98474in</Top>
+            <Top>4.60974in</Top>
             <Left>2.11647in</Left>
             <Height>0.19756in</Height>
             <Width>2.67424in</Width>
-            <ZIndex>103</ZIndex>
+            <ZIndex>94</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4484,11 +4293,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>EMail_Customer1</rd:DefaultName>
-            <Top>4.98474in</Top>
+            <Top>4.60974in</Top>
             <Left>4.9923in</Left>
             <Height>0.19756in</Height>
             <Width>2.46167in</Width>
-            <ZIndex>104</ZIndex>
+            <ZIndex>95</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4519,11 +4328,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Contacto1_Customer</rd:DefaultName>
-            <Top>5.39757in</Top>
-            <Left>0.88398in</Left>
+            <Top>5.02257in</Top>
+            <Left>1.10898in</Left>
             <Height>0.20833in</Height>
             <Width>3.05257in</Width>
-            <ZIndex>105</ZIndex>
+            <ZIndex>96</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4551,11 +4360,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>5.21146in</Top>
+            <Top>4.83646in</Top>
             <Left>0.10272in</Left>
             <Height>0.20833in</Height>
             <Width>7.35125in</Width>
-            <ZIndex>106</ZIndex>
+            <ZIndex>97</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4584,11 +4393,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.75694in</Top>
+            <Top>2.38194in</Top>
             <Left>0.11523in</Left>
             <Height>0.20833in</Height>
             <Width>7.33874in</Width>
-            <ZIndex>107</ZIndex>
+            <ZIndex>98</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4618,11 +4427,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Telf1_Customer</rd:DefaultName>
-            <Top>5.39757in</Top>
+            <Top>5.02257in</Top>
             <Left>5.82783in</Left>
             <Height>0.20833in</Height>
             <Width>1.62614in</Width>
-            <ZIndex>108</ZIndex>
+            <ZIndex>99</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4645,6 +4454,7 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
                       <FontSize>8pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <Format>dd/MM/yyyy</Format>
+                      <Color>White</Color>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -4654,18 +4464,18 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>FechaPlan_Customer</rd:DefaultName>
-            <Top>8.78412in</Top>
-            <Left>1.17931in</Left>
+            <Top>8.58967in</Top>
+            <Left>5.65771in</Left>
             <Height>0.20833in</Height>
             <Width>1.47194in</Width>
-            <ZIndex>109</ZIndex>
+            <ZIndex>100</ZIndex>
+            <Visibility>
+              <Hidden>true</Hidden>
+            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <BottomBorder>
-                <Style>Solid</Style>
-              </BottomBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -4679,7 +4489,7 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="************"+mid(First(Fields!NUMERO_TDC.Value, "DataSet_Result"),13,4)</Value>
+                    <Value>="************"+mid(First(Fields!NUMERO_TDC.Value, "DataSet_Result"),12,4)</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                     </Style>
@@ -4689,11 +4499,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CreditCardNumber_DOPaymentCreditCardGR</rd:DefaultName>
-            <Top>9.76432in</Top>
+            <Top>10.10182in</Top>
             <Left>1.2314in</Left>
             <Height>0.19792in</Height>
             <Width>2.51701in</Width>
-            <ZIndex>110</ZIndex>
+            <ZIndex>101</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4724,11 +4534,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>CardHolderName_DOPaymentCreditCardGR</rd:DefaultName>
-            <Top>9.50391in</Top>
+            <Top>9.84141in</Top>
             <Left>1.84105in</Left>
             <Height>0.20317in</Height>
             <Width>2.17819in</Width>
-            <ZIndex>111</ZIndex>
+            <ZIndex>102</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4760,11 +4570,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExpiryDate_DOPaymentCreditCardGR</rd:DefaultName>
-            <Top>10.0178in</Top>
+            <Top>10.3553in</Top>
             <Left>1.7173in</Left>
             <Height>0.21944in</Height>
             <Width>1.99505in</Width>
-            <ZIndex>112</ZIndex>
+            <ZIndex>103</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4795,11 +4605,11 @@ El socio podrá cancelar este contrato por escrito mediante el formulario de can
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>VATRegistrationNo_Customer1</rd:DefaultName>
-            <Top>13.82861in</Top>
+            <Top>14.32861in</Top>
             <Left>1.47703in</Left>
             <Height>0.24306in</Height>
             <Width>2.11032in</Width>
-            <ZIndex>113</ZIndex>
+            <ZIndex>104</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4865,11 +4675,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox91</rd:DefaultName>
-            <Top>29.65292in</Top>
-            <Left>0.17147in</Left>
+            <Top>31.12583in</Top>
+            <Left>0.18315in</Left>
             <Height>1.47264in</Height>
             <Width>7.2825in</Width>
-            <ZIndex>114</ZIndex>
+            <ZIndex>105</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -4897,54 +4707,16 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>29.38903in</Top>
-            <Left>0.16105in</Left>
+            <Top>30.56829in</Top>
+            <Left>0.18315in</Left>
             <Height>0.20833in</Height>
             <Width>1.03215in</Width>
-            <ZIndex>115</ZIndex>
+            <ZIndex>106</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <VerticalAlign>Middle</VerticalAlign>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="FechaPlan_Customer2">
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!FechaPlan_Customer.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                      <Format>dd/MM/yyyy</Format>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>FechaPlan_Customer</rd:DefaultName>
-            <Top>29.38556in</Top>
-            <Left>1.26264in</Left>
-            <Height>0.20833in</Height>
-            <Width>1.47194in</Width>
-            <ZIndex>116</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <BottomBorder>
-                <Style>Solid</Style>
-              </BottomBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -4969,11 +4741,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>31.2425in</Top>
+            <Top>32.7925in</Top>
             <Left>0.17439in</Left>
             <Height>0.24011in</Height>
             <Width>0.89034in</Width>
-            <ZIndex>117</ZIndex>
+            <ZIndex>107</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5002,11 +4774,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>31.2425in</Top>
+            <Top>32.7925in</Top>
             <Left>1.37871in</Left>
             <Height>0.23958in</Height>
             <Width>0.27043in</Width>
-            <ZIndex>118</ZIndex>
+            <ZIndex>108</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5035,11 +4807,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>31.24303in</Top>
+            <Top>32.79303in</Top>
             <Left>2.61655in</Left>
             <Height>0.22569in</Height>
             <Width>0.42764in</Width>
-            <ZIndex>119</ZIndex>
+            <ZIndex>109</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5068,11 +4840,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>31.99164in</Top>
+            <Top>33.54164in</Top>
             <Left>0.18315in</Left>
             <Height>0.18349in</Height>
-            <Width>0.43218in</Width>
-            <ZIndex>120</ZIndex>
+            <Width>0.53625in</Width>
+            <ZIndex>110</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5083,18 +4855,6 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Line Name="Line37">
-            <Top>32.17513in</Top>
-            <Left>0.60898in</Left>
-            <Height>0in</Height>
-            <Width>1.56542in</Width>
-            <ZIndex>121</ZIndex>
-            <Style>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-          </Line>
           <Textbox Name="Textbox74">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -5113,11 +4873,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>32.32722in</Top>
+            <Top>33.87722in</Top>
             <Left>0.18315in</Left>
             <Height>0.24306in</Height>
             <Width>1.29167in</Width>
-            <ZIndex>122</ZIndex>
+            <ZIndex>111</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5147,11 +4907,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>VATRegistrationNo_Customer1</rd:DefaultName>
-            <Top>32.32722in</Top>
+            <Top>33.87722in</Top>
             <Left>1.48871in</Left>
             <Height>0.24306in</Height>
             <Width>2.11032in</Width>
-            <ZIndex>123</ZIndex>
+            <ZIndex>112</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5159,39 +4919,6 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <BottomBorder>
                 <Style>Solid</Style>
               </BottomBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox75">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Por ANIMO: 				</Value>
-                    <Style>
-                      <FontSize>9pt</FontSize>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox59</rd:DefaultName>
-            <Top>33.14826in</Top>
-            <Left>0.17772in</Left>
-            <Height>0.18905in</Height>
-            <Width>0.80626in</Width>
-            <ZIndex>124</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -5215,11 +4942,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>PhoneNo_Customer</rd:DefaultName>
-            <Top>4.50466in</Top>
+            <Top>4.12966in</Top>
             <Left>0.1096in</Left>
             <Height>0.19536in</Height>
             <Width>1.51416in</Width>
-            <ZIndex>125</ZIndex>
+            <ZIndex>113</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5250,11 +4977,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Name_Customer</rd:DefaultName>
-            <Top>8.20207cm</Top>
+            <Top>7.24957cm</Top>
             <Left>0.27838cm</Left>
             <Height>0.43305cm</Height>
             <Width>5.78802cm</Width>
-            <ZIndex>126</ZIndex>
+            <ZIndex>114</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5285,11 +5012,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Ocupacion_Customer</rd:DefaultName>
-            <Top>4.98474in</Top>
+            <Top>4.60974in</Top>
             <Left>0.11523in</Left>
             <Height>0.19756in</Height>
             <Width>1.52103in</Width>
-            <ZIndex>127</ZIndex>
+            <ZIndex>115</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5310,7 +5037,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>=First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5324,11 +5051,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime</rd:DefaultName>
-            <Top>79.36583cm</Top>
+            <Top>83.30283cm</Top>
             <Left>2.88961cm</Left>
             <Height>0.6cm</Height>
             <Width>0.54175cm</Width>
-            <ZIndex>128</ZIndex>
+            <ZIndex>116</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5349,7 +5076,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=MonthName(month(Globals!ExecutionTime))</Value>
+                    <Value>=MonthName(month(First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")))</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5363,11 +5090,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime1</rd:DefaultName>
-            <Top>79.33055cm</Top>
+            <Top>83.26755cm</Top>
             <Left>4.19368cm</Left>
             <Height>0.6cm</Height>
             <Width>2.34653cm</Width>
-            <ZIndex>129</ZIndex>
+            <ZIndex>117</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5388,7 +5115,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>=First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5402,11 +5129,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime2</rd:DefaultName>
-            <Top>79.33055cm</Top>
+            <Top>83.26755cm</Top>
             <Left>7.84512cm</Left>
             <Height>0.6cm</Height>
             <Width>0.64559cm</Width>
-            <ZIndex>130</ZIndex>
+            <ZIndex>118</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5427,7 +5154,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>=First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5441,11 +5168,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime3</rd:DefaultName>
-            <Top>34.2438cm</Top>
+            <Top>35.5138cm</Top>
             <Left>2.70441cm</Left>
             <Height>0.6cm</Height>
             <Width>0.91599cm</Width>
-            <ZIndex>131</ZIndex>
+            <ZIndex>119</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5466,7 +5193,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=MonthName(Month(Globals!ExecutionTime))</Value>
+                    <Value>=MonthName(Month(First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")))</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5479,11 +5206,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime4</rd:DefaultName>
-            <Top>34.2438cm</Top>
+            <Top>35.5138cm</Top>
             <Left>4.47485cm</Left>
             <Height>0.6cm</Height>
             <Width>2.15348cm</Width>
-            <ZIndex>132</ZIndex>
+            <ZIndex>120</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5504,7 +5231,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=Globals!ExecutionTime</Value>
+                    <Value>=First(Fields!FechaIngreso_Customer.Value, "DataSet_Result")</Value>
                     <Style>
                       <FontSize>9pt</FontSize>
                       <FontWeight>Bold</FontWeight>
@@ -5518,11 +5245,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>ExecutionTime5</rd:DefaultName>
-            <Top>34.2438cm</Top>
+            <Top>35.5138cm</Top>
             <Left>7.81368cm</Left>
             <Height>0.6cm</Height>
             <Width>0.80251cm</Width>
-            <ZIndex>133</ZIndex>
+            <ZIndex>121</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5553,11 +5280,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Nacionalidad_Customer</rd:DefaultName>
-            <Top>9.34067cm</Top>
+            <Top>8.38817cm</Top>
             <Left>7.17837cm</Left>
             <Height>0.44011cm</Height>
             <Width>4.42257cm</Width>
-            <ZIndex>134</ZIndex>
+            <ZIndex>122</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5587,11 +5314,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>TelfdeTrabajo_Customer</rd:DefaultName>
-            <Top>11.53323cm</Top>
+            <Top>10.58073cm</Top>
             <Left>7.17837cm</Left>
             <Height>0.44011cm</Height>
             <Width>3.45976cm</Width>
-            <ZIndex>135</ZIndex>
+            <ZIndex>123</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5613,7 +5340,7 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
             <Left>7.90862cm</Left>
             <Height>2.27542cm</Height>
             <Width>2.50987cm</Width>
-            <ZIndex>136</ZIndex>
+            <ZIndex>124</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5637,11 +5364,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>DescripcionItem</rd:DefaultName>
-            <Top>5.05038cm</Top>
+            <Top>4.09788cm</Top>
             <Left>3.82142cm</Left>
             <Height>0.52913cm</Height>
             <Width>6.44605cm</Width>
-            <ZIndex>137</ZIndex>
+            <ZIndex>125</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5674,11 +5401,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>NumContrato_Customer</rd:DefaultName>
-            <Top>5.72418cm</Top>
+            <Top>4.77168cm</Top>
             <Left>14.86205cm</Left>
             <Height>0.59935cm</Height>
             <Width>3.43604cm</Width>
-            <ZIndex>138</ZIndex>
+            <ZIndex>126</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5709,11 +5436,11 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox2</rd:DefaultName>
-            <Top>2.26875in</Top>
+            <Top>1.89375in</Top>
             <Left>4.53179in</Left>
             <Height>0.20833in</Height>
             <Width>1.28374in</Width>
-            <ZIndex>139</ZIndex>
+            <ZIndex>127</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5725,28 +5452,16 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
-          <Textbox Name="USERNAME">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!USERNAME.Value, "DataSet_Result")</Value>
-                    <Style>
-                      <FontWeight>Bold</FontWeight>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>USERNAME</rd:DefaultName>
-            <Top>84.19658cm</Top>
-            <Left>2.53459cm</Left>
-            <Height>0.48019cm</Height>
-            <Width>5.19766cm</Width>
-            <ZIndex>140</ZIndex>
+          <Image Name="Image3">
+            <Source>Database</Source>
+            <Value>=First(Fields!FirmaCliente.Value, "DataSet_Result")</Value>
+            <MIMEType>image/png</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>34.85654cm</Top>
+            <Left>10.70869cm</Left>
+            <Height>1.25591cm</Height>
+            <Width>3.00004cm</Width>
+            <ZIndex>128</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -5756,14 +5471,135 @@ A este contrato se deberá adjuntar, copia de documento de identificación perso
                 <Style>Solid</Style>
                 <Width>1pt</Width>
               </BottomBorder>
+            </Style>
+          </Image>
+          <Image Name="Image4">
+            <Source>Database</Source>
+            <Value>=First(Fields!FirmaCliente.Value, "DataSet_Result")</Value>
+            <MIMEType>image/png</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>21.57081cm</Top>
+            <Left>3.066cm</Left>
+            <Height>1.23827cm</Height>
+            <Width>3.0004cm</Width>
+            <ZIndex>129</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+            </Style>
+          </Image>
+          <Textbox Name="Textbox64">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>9. CANCELACIONES:</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>El socio podrá cancelar este contrato por escrito mediante el formulario de cancelación que deberá solicitar personalmente en la sucursal ANIMO de su preferencia.  La cancelación se hará efectiva a los 15 días luego de la entrega del formulario. </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontSize>9pt</FontSize>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>None</TextDecoration>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox64</rd:DefaultName>
+            <Top>75.30605cm</Top>
+            <Left>0.4652cm</Left>
+            <Height>1.37611cm</Height>
+            <Width>18.49755cm</Width>
+            <ZIndex>130</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="TelfdeTrabajo_Customer2">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value EvaluationMode="Constant" />
+                    <Style>
+                      <FontSize>8pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>TelfdeTrabajo_Customer</rd:DefaultName>
+            <Top>10.58073cm</Top>
+            <Left>13.98958cm</Left>
+            <Height>0.44011cm</Height>
+            <Width>3.45976cm</Width>
+            <ZIndex>131</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Style>Solid</Style>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image5">
+            <Source>Database</Source>
+            <Value>=First(Fields!FirmaCliente.Value, "DataSet_Result")</Value>
+            <MIMEType>image/png</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>76.84797cm</Top>
+            <Left>3.22799cm</Left>
+            <Height>1.32465cm</Height>
+            <Width>3.00004cm</Width>
+            <ZIndex>132</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+            </Style>
+          </Image>
         </ReportItems>
-        <Height>85.92495cm</Height>
+        <Height>87.08884cm</Height>
         <Style />
       </Body>
       <Width>19.09183cm</Width>
