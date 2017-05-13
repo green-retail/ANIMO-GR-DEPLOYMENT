@@ -1,0 +1,1409 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="AnimoGR">
+      <DataSourceReference>AnimoGR</DataSourceReference>
+      <rd:SecurityType>None</rd:SecurityType>
+      <rd:DataSourceID>f7a88ed4-3887-492f-8fb8-f96942a34be7</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Cambio_TDC">
+      <Query>
+        <DataSourceName>AnimoGR</DataSourceName>
+        <QueryParameters>
+          <QueryParameter Name="@Cliente">
+            <Value>=Parameters!Cliente.Value</Value>
+          </QueryParameter>
+        </QueryParameters>
+        <CommandText>/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT
+	c.Name NombreSocio 
+      , c.No NoSocio	
+      , tdc.[CreditCardNumber]
+      , tdc.[Type]
+      , tdc.[ExpiryDate]
+      , tdc.[CardHolderName]
+      , tdc.[Pordefecto]
+     , tdc.BancoEmisor Banco
+     , c.[VAT Registration No.] Cedula
+     , (SELECT top 1 i.[Firts Name] FROM [dbo].[Customer_Extended] ce inner join dbo.Employees i on (ce.SalespersonCode= i.Code) where ce.No=c.No) Asesor
+     , (SELECT top 1 i.Description  FROM [dbo].[Customer_Extended] ce inner join dbo.item i on (ce.PlanMembresia= i.No) where ce.No=c.No) NomPlan
+    , (SELECT top 1 fm.SingPicture firma FROM [dbo].[CustomerSingWacom] fm where fm.type=3 and fm.No=c.No) firma
+   FROM [dbo].[Customer] c
+  inner join [dbo].[CreditCardGR] tdc
+  on (c.No=tdc.[No])
+  where tdc.Pordefecto=1
+  and c.no=@Cliente</CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="NoSocio">
+          <DataField>NoSocio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NombreSocio">
+          <DataField>NombreSocio</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreditCardNumber">
+          <DataField>CreditCardNumber</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Type">
+          <DataField>Type</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ExpiryDate">
+          <DataField>ExpiryDate</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CardHolderName">
+          <DataField>CardHolderName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Pordefecto">
+          <DataField>Pordefecto</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Banco">
+          <DataField>Banco</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cedula">
+          <DataField>Cedula</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Asesor">
+          <DataField>Asesor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="NomPlan">
+          <DataField>NomPlan</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="firma">
+          <DataField>firma</DataField>
+          <rd:TypeName>System.Byte[]</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Textbox Name="Textbox2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nombre del Socio:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.14458in</Top>
+            <Height>0.25in</Height>
+            <Width>1.32292in</Width>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>No.de Socio:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.71271in</Top>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Plan:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>0.71271in</Top>
+            <Left>6.31031cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.4375in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>VISA:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>0.00001cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.53125in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox6">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>AMEX:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>4.27302cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.63542in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox7">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>MASTERCARD:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>8.79738cm</Left>
+            <Height>0.25in</Height>
+            <Width>1.25in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox8">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>OTRA:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>14.79682cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.60416in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox9">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Banco:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>2.0825in</Top>
+            <Left>0.00001cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.53993in</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Nombre de la Tarjeta:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>2.68146in</Top>
+            <Left>0.00002cm</Left>
+            <Height>0.25in</Height>
+            <Width>1.46874in</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Número de la Tarjeta:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.29604in</Top>
+            <Height>0.25in</Height>
+            <Width>1.46875in</Width>
+            <ZIndex>9</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox13">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fecha de Expiración:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.96271in</Top>
+            <Left>0.00002cm</Left>
+            <Height>0.25in</Height>
+            <Width>1.46874in</Width>
+            <ZIndex>10</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox14">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Mes:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.96271in</Top>
+            <Left>3.73062cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.47916in</Width>
+            <ZIndex>11</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox15">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Año:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>3.96271in</Top>
+            <Left>10.25262cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.47916in</Width>
+            <ZIndex>12</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox16">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Queda entendido que el presente formulario no modifique las condiciones del contrato firmado inicialmente.</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox16</rd:DefaultName>
+            <Top>4.60292in</Top>
+            <Left>0.00001in</Left>
+            <Height>0.46222in</Height>
+            <Width>6.55467in</Width>
+            <ZIndex>13</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox17">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Fecha:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>5.25958in</Top>
+            <Left>0.00002cm</Left>
+            <Height>0.25in</Height>
+            <Width>0.53125in</Width>
+            <ZIndex>14</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox18">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Cédula:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>5.75958in</Top>
+            <Height>0.25in</Height>
+            <Width>0.61805in</Width>
+            <ZIndex>15</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox19">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Firma del Tarjetahabiente:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>6.42625in</Top>
+            <Left>0.00002cm</Left>
+            <Height>0.25in</Height>
+            <Width>1.70833in</Width>
+            <ZIndex>16</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox20">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Atendido por:</Value>
+                    <Style>
+                      <FontFamily>Times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox2</rd:DefaultName>
+            <Top>7.00958in</Top>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>17</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NombreSocio">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NombreSocio.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NombreSocio</rd:DefaultName>
+            <Top>0.14458in</Top>
+            <Left>1.32292in</Left>
+            <Height>0.25in</Height>
+            <Width>4.52083in</Width>
+            <ZIndex>18</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NoSocio">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NoSocio.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NoSocio</rd:DefaultName>
+            <Top>0.71271in</Top>
+            <Left>1in</Left>
+            <Height>0.25in</Height>
+            <Width>1.3177in</Width>
+            <ZIndex>19</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="NomPlan">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!NomPlan.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>NomPlan</rd:DefaultName>
+            <Top>0.71271in</Top>
+            <Left>2.96354in</Left>
+            <Height>0.25in</Height>
+            <Width>2.30208in</Width>
+            <ZIndex>20</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Type">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=iif(First(Fields!Type.Value, "Cambio_TDC")="VISA","X","")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Type</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>0.57292in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>21</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Type2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=iif(First(Fields!Type.Value, "Cambio_TDC")="AMERICAN EXPRESS","X","")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Type</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>2.37326in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>22</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Type3">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=iif(First(Fields!Type.Value, "Cambio_TDC")="MASTER CARD","X","")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Type</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>4.74132in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>23</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Type4">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=IIf(First(Fields!Type.Value, "Cambio_TDC")="DISCOVER","X","")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Type</rd:DefaultName>
+            <Top>1.29083in</Top>
+            <Left>6.42968in</Left>
+            <Height>0.25in</Height>
+            <Width>1in</Width>
+            <ZIndex>24</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Banco">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Banco.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Banco</rd:DefaultName>
+            <Top>2.0825in</Top>
+            <Left>0.53993in</Left>
+            <Height>0.25in</Height>
+            <Width>3in</Width>
+            <ZIndex>25</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CreditCardNumber">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CreditCardNumber.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CreditCardNumber</rd:DefaultName>
+            <Top>3.29604in</Top>
+            <Left>1.46875in</Left>
+            <Height>0.25in</Height>
+            <Width>4.15798in</Width>
+            <ZIndex>26</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="CardHolderName">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!CardHolderName.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>CardHolderName</rd:DefaultName>
+            <Top>2.68146in</Top>
+            <Left>1.48264in</Left>
+            <Height>0.25in</Height>
+            <Width>4.15798in</Width>
+            <ZIndex>27</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ExpiryDate">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Left(First(Fields!ExpiryDate.Value, "Cambio_TDC"),2)</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ExpiryDate</rd:DefaultName>
+            <Top>3.96271in</Top>
+            <Left>1.9618in</Left>
+            <Height>0.25in</Height>
+            <Width>1.35417in</Width>
+            <ZIndex>28</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ExpiryDate2">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Mid(First(Fields!ExpiryDate.Value, "Cambio_TDC"),3,4)</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ExpiryDate</rd:DefaultName>
+            <Top>3.96271in</Top>
+            <Left>4.55729in</Left>
+            <Height>0.25in</Height>
+            <Width>1.35417in</Width>
+            <ZIndex>29</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="ExecutionTime">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Globals!ExecutionTime</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>ExecutionTime</rd:DefaultName>
+            <Top>5.25958in</Top>
+            <Left>0.53125in</Left>
+            <Height>0.25in</Height>
+            <Width>2.84201in</Width>
+            <ZIndex>30</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Cedula">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Cedula.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Cedula</rd:DefaultName>
+            <Top>5.75958in</Top>
+            <Left>0.61805in</Left>
+            <Height>0.25in</Height>
+            <Width>2.75521in</Width>
+            <ZIndex>31</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Image Name="Image1">
+            <Source>Database</Source>
+            <Value>=First(Fields!firma.Value, "Cambio_TDC")</Value>
+            <MIMEType>image/png</MIMEType>
+            <Sizing>Fit</Sizing>
+            <Top>6.06514in</Top>
+            <Left>1.75in</Left>
+            <Height>0.59722in</Height>
+            <Width>1.64062in</Width>
+            <ZIndex>32</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+            </Style>
+          </Image>
+          <Textbox Name="Asesor">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=First(Fields!Asesor.Value, "Cambio_TDC")</Value>
+                    <Style>
+                      <FontFamily>times New Roman</FontFamily>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Asesor</rd:DefaultName>
+            <Top>7.00958in</Top>
+            <Left>1.02778in</Left>
+            <Height>0.25in</Height>
+            <Width>2.9375in</Width>
+            <ZIndex>33</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>18.43933cm</Height>
+        <Style />
+      </Body>
+      <Width>19.18889cm</Width>
+      <Page>
+        <PageHeader>
+          <Height>4.61257cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Cambio de Tarjeta de Crédito</Value>
+                      <Style>
+                        <FontFamily>times New Roman</FontFamily>
+                        <FontSize>14pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>textbox1</rd:DefaultName>
+              <Top>2.38407cm</Top>
+              <Left>5.89027cm</Left>
+              <Height>0.36in</Height>
+              <Width>2.91667in</Width>
+              <Style>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox36">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>PARA CONTRATOS DE DESCUENTOS DIRECTO</Value>
+                      <Style>
+                        <FontFamily>times New Roman</FontFamily>
+                        <FontSize>12pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox36</rd:DefaultName>
+              <Top>1.32639in</Top>
+              <Left>1.88636in</Left>
+              <Height>0.25in</Height>
+              <Width>3.78195in</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Image Name="Image3">
+              <Source>Embedded</Source>
+              <Value>animobyncongym</Value>
+              <Sizing>FitProportional</Sizing>
+              <Left>3.19401in</Left>
+              <Height>0.87375in</Height>
+              <Width>1.16667in</Width>
+              <ZIndex>2</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageHeight>27.94cm</PageHeight>
+        <PageWidth>21.59cm</PageWidth>
+        <LeftMargin>1cm</LeftMargin>
+        <RightMargin>1cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0.5cm</BottomMargin>
+        <ColumnSpacing>1.27cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="Cliente">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>Cliente</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <EmbeddedImages>
+    <EmbeddedImage Name="animobyncongym">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <Language>es-ES</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>5a2f3a90-6b2b-4a11-991f-ef325f0502da</rd:ReportID>
+</Report>
