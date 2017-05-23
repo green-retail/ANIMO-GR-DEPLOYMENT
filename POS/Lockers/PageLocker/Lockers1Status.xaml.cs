@@ -1,0 +1,215 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace Green_Retail.POS.Lockers.PageLocker
+{
+    /// <summary>
+    /// Lógica de interacción para Lockers1.xaml
+    /// </summary>
+    public partial class Lockers1Status : Page
+    {
+        public List<int> locker_state = new List<int>();
+        public ImageBrush SmallLockermON;
+        public ImageBrush SmallLockermOFF;
+        public ImageBrush MediumLockermON;
+        public ImageBrush MediumLockermOFF;
+        public bool s_busy;
+        public bool s_enabled;
+        public bool s_gender;
+        public int s_size;
+        DataTable dtt;
+        private Button[] Locker = new Button[400];
+        private TextBox[] txtloc = new TextBox[400];
+        public Lockers1Status()
+        {
+            InitializeComponent();
+            locker_state = new List<int>();
+        }
+        public void CargaInicialLocker(DataTable dt,int frame)
+        {
+            dtt = dt;
+            int Column, Row, a;
+
+            int i = 0;
+            switch (frame)
+            {
+                case 1:
+                    i = 0;
+                    break;
+                case 2:
+                    i = 60;
+                    break;
+                case 3:
+                    i = 120;
+                    break;
+                case 4:
+                    i = 180;
+                    break;
+                case 5:
+                    i = 240;
+                    break;
+                case 6:
+                    i = 300;
+                    break;
+                default:
+                    i = 0;
+                    break;
+            }
+
+            for (Row = 2; Row < 14; Row++)
+            {
+                for (Column = 0; Column < 10; Column++)
+                {
+                    for (a = 0; a < 1; a++)
+                    {
+                        if ((Row % 2) != 0)
+                        {
+                            i = i + 1;
+
+                            txtloc[i] = new TextBox();
+                            txtloc[i].Name = "txtloc" + i;
+                            txtloc[i].Text = "";
+                            txtloc[i].Width = 60;
+                            txtloc[i].Height = 20;
+                            txtloc[i].SetValue(Grid.ColumnProperty, Column);
+                            txtloc[i].SetValue(Grid.RowProperty, Row);
+                            GridLocker.Children.Add(txtloc[i]);
+                            txtloc[i].IsReadOnly = true;
+                            txtloc[i].BorderThickness = new Thickness(0);
+                            //txtloc[i].Background = Brushes.White;
+                            var bc = new BrushConverter();
+                            txtloc[i].Background = (Brush)bc.ConvertFrom("#FFE7E8EC");
+                            txtloc[i].TextAlignment = TextAlignment.Center;
+                            txtloc[i].Loaded += txtEventoLoad;
+                            txtloc[i].Visibility = Visibility.Collapsed;
+
+                            Locker[i] = new Button();
+                            Locker[i].Name = "Locker" + i;
+                            Locker[i].Background = Brushes.Silver;
+                            Locker[i].Width = 35;
+                            Locker[i].Height = 75;
+                            Locker[i].Margin = new Thickness(1);
+                            Locker[i].SetValue(Grid.ColumnProperty, Column);
+                            Locker[i].SetValue(Grid.RowProperty, Row - 1);
+                            GridLocker.Children.Add(Locker[i]);
+                            Locker[i].Click += EventoClick;
+                            Locker[i].IsEnabled = true;
+                            Locker[i].Loaded += EventoLoad;
+                            Locker[i].Visibility = Visibility.Collapsed;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void EventoClick(object sender, RoutedEventArgs e)
+        {
+            Button objeto = sender as Button;
+            DataRow[] cond1 = dtt.Select("id_Locker = " + +Convert.ToInt16(objeto.Name.Replace("Locker", "")) + " and Busy = 1");
+            if (objeto.Background == Brushes.Green)
+            {
+
+                HelpLockers Help = new HelpLockers();
+
+                s_busy = Convert.ToBoolean(cond1[0][4]);
+                s_size = Convert.ToInt16(cond1[0][3].ToString());
+                s_gender = !Convert.ToBoolean(Convert.ToInt16(cond1[0][2]));
+
+                objeto.Background = Help.BackgroundLocker(s_size, s_gender, s_busy);
+                locker_state.RemoveAll(item => item == Convert.ToInt32(objeto.Name.Replace("Locker", "")));
+            }
+            else if (cond1.Length > 0)
+            {
+                objeto.Background = Brushes.Green;
+                locker_state.Add(Convert.ToInt32(objeto.Name.Replace("Locker", "")));
+            }
+            else
+            {
+
+            }
+        }
+        private void EventoLoad(object sender, RoutedEventArgs e)
+        {
+            ImageBrush imgdt = new ImageBrush();
+            Button objeto = sender as Button;
+            int a = Convert.ToInt16(objeto.Name.Replace("Locker", "").ToString());
+            int f = 0;
+            if (dtt.Rows.Count > 0)
+            {
+                while (a != Convert.ToInt16(dtt.Rows[f][0].ToString()) && f < (dtt.Rows.Count - 1))
+                {
+                    f++;
+                }
+                if (a == Convert.ToInt16(dtt.Rows[f][0].ToString()))
+                {
+                    s_busy = Convert.ToBoolean(Convert.ToInt16(dtt.Rows[f][4].ToString()));
+                    s_size = Convert.ToInt16(dtt.Rows[f][3].ToString());
+                    s_gender = !Convert.ToBoolean(Convert.ToInt16(dtt.Rows[f][2].ToString()));
+
+                    HelpLockers Help = new HelpLockers();
+
+                    imgdt = Help.BackgroundLocker(s_size, s_gender, s_busy);
+
+                    s_enabled = Convert.ToBoolean(dtt.Rows[f][1]);
+                    objeto.IsEnabled = true;
+
+                    objeto.Background = Brushes.White;
+                    objeto.Background = imgdt;
+                    //si esta ocupado
+                    if (s_busy)
+                    {
+                        objeto.Visibility = Visibility.Visible;
+
+                    }
+                    //si esta habilitado
+                    else if (!s_enabled)
+                    {
+                        objeto.Visibility = Visibility.Collapsed;
+                    }
+                }
+
+            }
+
+        }
+        private void txtEventoLoad(object sender, RoutedEventArgs e)
+        {
+            TextBox objeto = sender as TextBox;
+            int a = Convert.ToInt16(objeto.Name.Replace("txtloc", "").ToString());
+            int f = 0;
+            if (dtt.Rows.Count > 0)
+            {
+                while (a != Convert.ToInt16(dtt.Rows[f][0].ToString()) && f < (dtt.Rows.Count - 1))
+                {
+                    f++;
+                }
+                if (a == Convert.ToInt16(dtt.Rows[f][0].ToString()))
+                {
+                    s_busy = Convert.ToBoolean(Convert.ToInt16(dtt.Rows[f][4].ToString()));
+                    objeto.Text = dtt.Rows[f][7].ToString();
+                    if (s_busy)
+                    {
+                        objeto.Visibility = Visibility.Visible;
+                    }
+                }
+
+            }
+
+        }
+        public List<int> Selected()
+        {
+            return locker_state;
+        }
+    }
+}
