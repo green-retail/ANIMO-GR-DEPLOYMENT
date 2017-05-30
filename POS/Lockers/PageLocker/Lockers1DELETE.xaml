@@ -1,0 +1,50 @@
+﻿<Page x:Name="Lockers50" x:Class="Green_Retail.POS.Lockers.PageLocker.Lockers1DELETE"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Green_Retail.POS.Lockers.PageLocker"
+        mc:Ignorable="d"
+        Title="Lockers1DELETE" Height="950" Width="950" ForceCursor="True" Background="White">
+
+    <Grid Name="GridLocker" Background="#FFE7E8EC">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+            <ColumnDefinition Width="35*"/>
+
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+
+    </Grid>
+
+</Page>
